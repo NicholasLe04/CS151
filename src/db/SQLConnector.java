@@ -14,9 +14,10 @@ public class SQLConnector {
 	private Connection conn;
 
 	/**
-	 * Establish connection with SQLite DB. Only supposed to be run once on object creation.
+	 * Establish connection with SQLite DB. To be run only once on application startup.
 	 */
 	public SQLConnector() {
+		
 		// get directory of jar file
 		String directory = "";
 		try {
@@ -26,13 +27,14 @@ public class SQLConnector {
 			e.printStackTrace();
 		}
 		
+		// create directory if not exist
 		try {
 			Files.createDirectories(Paths.get(directory + "/data"));
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 		
-		// attempt create database 
+		// attempt create/connect database 
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection("jdbc:sqlite:" + directory + "/data/data.db");
@@ -41,12 +43,14 @@ public class SQLConnector {
 			e.printStackTrace();
 		}
 		
+		// TODO: attempt create all tables if not exist
+		
 		this.conn = conn;
 	}
 	
 	/**
 	 * Return db Connection object.
-	 * @return db Connection object
+	 * @return Connection object
 	 */
 	public Connection getConnection() {
 		return conn;

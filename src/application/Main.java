@@ -11,15 +11,17 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			// db stuff
-			db.SQLConnector connector = new db.SQLConnector();
-			Connection db = connector.getConnection();
 			
-			// javafx stuff
+			// just for testing. get rid of later and only use classes in entries
+			db.SQLConnector db = new db.SQLConnector();
+			Connection conn = db.getConnection();
+			
+			// javafx stuff TODO
 			BorderPane root = new BorderPane();
 			Scene scene = new Scene(root,400,400);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
