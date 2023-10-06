@@ -3,6 +3,7 @@ package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import java.net.URISyntaxException;
 import java.io.IOException;
@@ -43,7 +44,37 @@ public class SQLConnector {
 			e.printStackTrace();
 		}
 		
-		// TODO: attempt create all tables if not exist
+		// attempt create all tables if not exist
+		try {
+			Statement statement = conn.createStatement();
+			statement.execute(
+				"CREATE TABLE IF NOT EXISTS project(" + 
+					"name TEXT UNIQUE NOT NULL PRIMARY KEY, " +
+					"start_date TEXT NOT NULL, " +
+					"desc TEXT" +
+				")"
+			);
+			statement.execute(
+				"CREATE TABLE IF NOT EXISTS ticket(" +
+					"tid INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
+					"name TEXT NOT NULL, " +
+					"desc TEXT, " +
+					"p_name TEXT NOT NULL, " +
+					"FOREIGN KEY(p_name) REFERENCES project(name)" +
+				")"
+			);
+			statement.execute(
+				"CREATE TABLE IF NOT EXISTS comment(" +
+					"cid INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
+					"created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
+					"body TEXT NOT NULL, " +
+					"tid INT NOT NULL, " +
+					"FOREIGN KEY(tid) REFERENCES ticket(tid)" +
+				")"
+			);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
 		this.conn = conn;
 	}
