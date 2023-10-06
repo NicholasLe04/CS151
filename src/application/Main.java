@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 
 import java.sql.Connection;
 
+import entries.ProjectManager;
+
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
@@ -15,6 +17,8 @@ public class Main extends Application {
 			// just for testing. get rid of later and only use classes in entries
 			db.SQLConnector db = new db.SQLConnector();
 			Connection conn = db.getConnection();
+			
+			entries.ProjectManager pm = new entries.ProjectManager(conn);
 			
 			// javafx stuff TODO
 			BorderPane root = new BorderPane();

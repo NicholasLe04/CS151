@@ -12,6 +12,7 @@ public class Ticket {
 	ArrayList<Comment> comments;
 	
 	public Ticket(String name, String desc, Connection conn) {
+		this.comments = new ArrayList<>();
 		this.name = name;
 		this.desc = desc;
 		this.conn = conn;

@@ -43,6 +43,7 @@ public class SQLConnector {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		this.conn = conn;
 		
 		// attempt create all tables if not exist
 		try {
@@ -75,8 +76,6 @@ public class SQLConnector {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-		this.conn = conn;
 	}
 	
 	/**

@@ -21,6 +21,7 @@ public class Project {
 	 * @param sql.Connection conn
 	 */
 	public Project(String name, LocalDate date, String desc, Connection conn) {
+		this.tickets = new ArrayList<>();
 		this.name = name;
 		this.date = date;
 		this.desc = desc;
@@ -64,5 +65,11 @@ public class Project {
 		// TODO: call comment.delete on every comment in that ticket
 		// TODO: remove ticket from database and ArrayList
 		// planning to recursively remove from databases
+	}
+	
+	// TODO: REMOVE THIS IS FOR TESTING ONLY
+	@Override
+	public String toString() {
+		return name + " " + date + " " + desc;
 	}
 }
