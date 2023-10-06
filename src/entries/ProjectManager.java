@@ -63,9 +63,6 @@ public class ProjectManager {
 	}
 	
 	public void deleteProject(String name) {
-		
-		// TODO: call ticket.delete on every ticket in that project
 		// TODO: remove project from database and ArrayList
-		// planning to recursively remove from databases
 	}
 }

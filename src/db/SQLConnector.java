@@ -48,6 +48,7 @@ public class SQLConnector {
 		// attempt create all tables if not exist
 		try {
 			Statement statement = conn.createStatement();
+			statement.execute("PRAGMA foreign_keys = ON");
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS project(" + 
 					"name TEXT UNIQUE NOT NULL PRIMARY KEY, " +
@@ -61,7 +62,7 @@ public class SQLConnector {
 					"name TEXT NOT NULL, " +
 					"desc TEXT, " +
 					"p_name TEXT NOT NULL, " +
-					"FOREIGN KEY(p_name) REFERENCES project(name)" +
+					"FOREIGN KEY(p_name) REFERENCES project(name) ON DELETE CASCADE" +
 				")"
 			);
 			statement.execute(
@@ -70,7 +71,7 @@ public class SQLConnector {
 					"created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
 					"body TEXT NOT NULL, " +
 					"tid INT NOT NULL, " +
-					"FOREIGN KEY(tid) REFERENCES ticket(tid)" +
+					"FOREIGN KEY(tid) REFERENCES ticket(tid) ON DELETE CASCADE" +
 				")"
 			);
 		} catch(SQLException e) {

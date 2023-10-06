@@ -43,6 +43,5 @@ public class Ticket {
 	 */
 	public void deleteComment(String name) {
 		// TODO: remove comment from database and ArrayList
-		// planning to recursively remove from databases
 	}
 }

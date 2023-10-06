@@ -14,10 +14,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			// just for testing. get rid of later and only use classes in entries
+			// just for testing. get rid of later
 			db.SQLConnector db = new db.SQLConnector();
 			Connection conn = db.getConnection();
-			
 			entries.ProjectManager pm = new entries.ProjectManager(conn);
 			
 			// javafx stuff TODO
