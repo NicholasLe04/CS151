@@ -43,13 +43,20 @@ public class ProjectManager {
 	}
 	
 	/**
+	 * Get all Project objects.
+	 * @return ArrayList of all Project objects
+	 */
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+	
+	/**
 	 * Create a persistent project.
 	 * @param String name
 	 * @param LocalDate date
 	 * @param String desc
 	 */
 	public void createProject(String name, LocalDate date, String desc) {
-		
 		// insert project into database
 		try {
 			Statement statement = conn.createStatement();
@@ -60,7 +67,6 @@ public class ProjectManager {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
 		// add project to ArrayList in memory
 		projects.add(new Project(name, date, desc, conn));
 	}
@@ -93,11 +99,4 @@ public class ProjectManager {
 		}
 	}
 	
-	/**
-	 * Get all Project objects.
-	 * @return ArrayList of all Project objects
-	 */
-	public ArrayList<Project> getProjects() {
-		return projects;
-	}
 }

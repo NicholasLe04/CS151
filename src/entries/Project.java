@@ -37,7 +37,7 @@ public class Project {
 			Statement statement = conn.createStatement();
 			ResultSet res = statement.executeQuery(
 				"SELECT * " +
-				"FROM ticket" + 
+				"FROM ticket " + 
 				"WHERE project_name=" + name
 			);
 			// places everything in ArrayList tickets
@@ -60,39 +60,23 @@ public class Project {
 	 * @param String desc
 	 */
 	public void edit(String name, LocalDate date, String desc) {
-		// TODO: SQL UPDATE 
+		// query
 		try {
-			// query
 			Statement statement = conn.createStatement();
 			statement.executeQuery(
-					"UPDATE project" +
-					"SET project_name=" + name +
-					"start_date=" + date + "," +
-					"desc=" + desc + 
-					"WHERE project_name=" + name
+				"UPDATE project " +
+				"SET project_name=" + name + ", start_date=" + date + ", desc=" + desc + " " +
+				"WHERE project_name=" + name
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+		// modify object
+		this.name = name;
+		this.date = date;
+		this.desc = desc;
 	}
 	
-	
-	/**
-	 * Create a ticket associated with this project.
-	 */
-	public void createTicket(String name, String desc) {
-		// TODO: SQL INSERT
-		// TODO: create new ticket object, passing conn
-	}
-	
-	/**
-	 * Delete a ticket associated with this project.
-	 */
-	public void deleteTicket(String name) {
-		// TODO: call comment.delete on every comment in that ticket
-		// TODO: remove ticket from database and ArrayList
-		// planning to recursively remove from databases
-	}
 	
 	/**
 	 * Get name of Project.
@@ -124,6 +108,23 @@ public class Project {
 	 */
 	public ArrayList<Ticket> getTickets() {
 		return tickets;
+	}
+	
+	/**
+	 * Create a ticket associated with this project.
+	 */
+	public void createTicket(String name, String desc) {
+		// TODO: SQL INSERT
+		// TODO: create new ticket object, passing conn
+	}
+	
+	/**
+	 * Delete a ticket associated with this project.
+	 */
+	public void deleteTicket(String name) {
+		// TODO: call comment.delete on every comment in that ticket
+		// TODO: remove ticket from database and ArrayList
+		// planning to recursively remove from databases
 	}
 	
 	// TODO: REMOVE THIS IS FOR TESTING ONLY

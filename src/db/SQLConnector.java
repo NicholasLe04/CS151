@@ -69,7 +69,7 @@ public class SQLConnector {
 				"CREATE TABLE IF NOT EXISTS comment(" +
 					"comment_id INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
 					"created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
-					"body TEXT NOT NULL, " +
+					"comment_body TEXT NOT NULL, " +
 					"ticket_id INT NOT NULL, " +
 					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE" +
 				")"

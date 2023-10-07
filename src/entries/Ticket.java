@@ -28,21 +28,6 @@ public class Ticket {
 	}
 	
 	/**
-	 * Create a comment associated with this project.
-	 */
-	public void createComment(String name, String content) {
-		// TODO: SQL INSERT
-		// TODO: create new comment object, passing conn
-	}
-	
-	/**
-	 * Delete a comment associated with this project.
-	 */
-	public void deleteComment(String name) {
-		// TODO: remove comment from database and ArrayList
-	}
-	
-	/**
 	 * Get name of Ticket.
 	 * @return String name of Ticket
 	 */
@@ -64,5 +49,20 @@ public class Ticket {
 	 */
 	public ArrayList<Comment> getComments() {
 		return comments;
+	}
+	
+	/**
+	 * Create a comment associated with this project.
+	 */
+	public void createComment(String name, String content) {
+		// TODO: SQL INSERT
+		// TODO: create new comment object, passing conn
+	}
+	
+	/**
+	 * Delete a comment associated with this project.
+	 */
+	public void deleteComment(String name) {
+		// TODO: remove comment from database and ArrayList
 	}
 }
