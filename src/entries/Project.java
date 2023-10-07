@@ -36,7 +36,7 @@ public class Project {
 			ResultSet res = statement.executeQuery(
 				"SELECT * " +
 				"FROM ticket" + 
-				"WHERE p_name=" + name
+				"WHERE project_name=" + name
 			);
 			// places everything in ArrayList tickets
 			while (res.next()) {
@@ -64,10 +64,10 @@ public class Project {
 			Statement statement = this.conn.createStatement();
 			statement.executeQuery(
 					"UPDATE project" +
-					"SET name=" + name +
+					"SET project_name=" + name +
 					"start_date=" + date + "," +
 					"desc=" + desc + 
-					"WHERE name=" + this.name
+					"WHERE project_name=" + this.name
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();

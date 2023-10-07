@@ -51,27 +51,28 @@ public class SQLConnector {
 			statement.execute("PRAGMA foreign_keys = ON");
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS project(" + 
-					"name TEXT UNIQUE NOT NULL PRIMARY KEY, " +
+					"project_name TEXT UNIQUE NOT NULL PRIMARY KEY, " +
 					"start_date TEXT NOT NULL, " +
 					"desc TEXT" +
 				")"
 			);
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS ticket(" +
-					"tid INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
-					"name TEXT NOT NULL, " +
+					"ticket_id INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
+					"ticket_name TEXT NOT NULL, " +
 					"desc TEXT, " +
-					"p_name TEXT NOT NULL, " +
-					"FOREIGN KEY(p_name) REFERENCES project(name) ON DELETE CASCADE" +
+					"project_name TEXT NOT NULL, " +
+					"FOREIGN KEY(project_name) REFERENCES project(project_name) ON DELETE CASCADE" +
 				")"
 			);
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS comment(" +
-					"cid INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
+					"comment_id INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
 					"created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
+					"comment_name TEXT NOT NULL, " +
 					"body TEXT NOT NULL, " +
-					"tid INT NOT NULL, " +
-					"FOREIGN KEY(tid) REFERENCES ticket(tid) ON DELETE CASCADE" +
+					"ticket_id INT NOT NULL, " +
+					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE" +
 				")"
 			);
 		} catch(SQLException e) {
