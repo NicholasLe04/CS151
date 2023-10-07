@@ -28,6 +28,14 @@ public class Ticket {
 	}
 	
 	/**
+	 * Get id of Ticket.
+	 * @return int id of Ticket
+	 */
+	public int getId() {
+		return id;
+	}
+	
+	/**
 	 * Get name of Ticket.
 	 * @return String name of Ticket
 	 */

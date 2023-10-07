@@ -11,8 +11,7 @@ import java.sql.Statement;
 public class Project {
 	
 	Connection conn;
-	
-	private int id;
+
 	private String name;
 	private LocalDate date;
 	private String desc;
@@ -42,10 +41,10 @@ public class Project {
 			);
 			// places everything in ArrayList tickets
 			while (res.next()) {
-				int ticket_id = res.getInt(1);
-				String ticket_name = res.getString(2);
-				String ticket_desc = res.getString(3);
-				tickets.add(new Ticket(ticket_id, ticket_name, ticket_desc, conn));
+				int ticketId = res.getInt(1);
+				String ticketName = res.getString(2);
+				String ticketDesc = res.getString(3);
+				tickets.add(new Ticket(ticketId, ticketName, ticketDesc, conn));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -63,10 +62,10 @@ public class Project {
 		// query
 		try {
 			Statement statement = conn.createStatement();
-			statement.executeQuery(
+			statement.executeUpdate(
 				"UPDATE project " +
 				"SET project_name=" + name + ", start_date=" + date + ", desc=" + desc + " " +
-				"WHERE project_name=" + name
+				"WHERE project_name=" + this.name
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -113,18 +112,43 @@ public class Project {
 	/**
 	 * Create a ticket associated with this project.
 	 */
-	public void createTicket(String name, String desc) {
-		// TODO: SQL INSERT
-		// TODO: create new ticket object, passing conn
+	public void createTicket(String ticketName, String ticketDesc) {
+		// TODO: TEST THIS
+		// add ticket to db
+		int ticketId = 0;
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet res = statement.executeQuery("SELECT last_insert_rowid() FROM ticket");
+			statement.executeUpdate(
+				"INSERT INTO ticket(ticket_name, desc, project_name) " +
+				"VALUES('" + ticketName + "', '" + ticketDesc + "', '" + name + "')"
+			);
+			ticketId = res.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// add ticket to memory
+		tickets.add(new Ticket(ticketId, ticketName, ticketDesc, conn));
 	}
 	
 	/**
 	 * Delete a ticket associated with this project.
 	 */
-	public void deleteTicket(String name) {
-		// TODO: call comment.delete on every comment in that ticket
-		// TODO: remove ticket from database and ArrayList
-		// planning to recursively remove from databases
+	public void deleteTicket(Ticket toDelete) {
+		// TODO: TEST THIS
+		// remove from db
+		try {
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(
+				"DELETE " +
+				"FROM ticket " +
+				"WHERE ticket_id=" + toDelete.getId()
+			);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// remove from memory
+		tickets.remove(toDelete);
 	}
 	
 	// TODO: REMOVE THIS IS FOR TESTING ONLY

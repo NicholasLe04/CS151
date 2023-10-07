@@ -36,11 +36,19 @@ public class Comment {
 				"SET comment_body=" + body + " " +
 				"WHERE comment_id=" + id
 			);
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		// modify object
 		this.body = body;
+	}
+	
+	/**
+	 * Get id of Comment.
+	 * @return int id of Comment
+	 */
+	public int getId() {
+		return id;
 	}
 	
 	/**

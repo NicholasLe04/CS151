@@ -32,10 +32,10 @@ public class ProjectManager {
 			);
 			// places everything in ArrayList projects
 			while (res.next()) {
-				String name = res.getString(1);
-				String startDate = res.getString(2);
-				String desc = res.getString(3);
-				projects.add(new Project(name, LocalDate.parse(startDate), desc, conn));
+				String projectName = res.getString(1);
+				String projectStartDate = res.getString(2);
+				String projectDesc = res.getString(3);
+				projects.add(new Project(projectName, LocalDate.parse(projectStartDate), projectDesc, conn));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -57,6 +57,7 @@ public class ProjectManager {
 	 * @param String desc
 	 */
 	public void createProject(String name, LocalDate date, String desc) {
+		// TODO: CHECK IF THE NEW PROJECT NAME IS UNIQUE, AND HANDLE IF IT'S NOT
 		// insert project into database
 		try {
 			Statement statement = conn.createStatement();
@@ -85,13 +86,13 @@ public class ProjectManager {
 				"WHERE project_name=" + name
 			);
 			
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		// remove project from ArrayList. i know this implementation sucks and is O(2n),
 		// but in my defense it should still be negligible.
 		// runtime should be better with HashMap, but that makes everything harder
+		// fix if u want to
 		for (int i = 0; i < projects.size(); i++) {
 			if (projects.get(i).getName().equals(name)) {
 				projects.remove(i);
