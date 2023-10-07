@@ -1,6 +1,9 @@
 package entries;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -27,6 +30,25 @@ public class Project {
 		this.desc = desc;
 		this.conn = conn;
 		// TODO: SQL SELECT all tickets associated with this project, populate tickets ArrayList, pass conn to each of them
+		try {
+			// queries for all tickets
+			Statement statement = this.conn.createStatement();
+			ResultSet res = statement.executeQuery(
+				"SELECT * " +
+				"FROM ticket" + 
+				"WHERE p_name=" + name
+			);
+			// places everything in ArrayList tickets
+			while (res.next()) {
+				String ticket_name = res.getString(1);
+				String ticket_desc = res.getString(2);
+				Ticket ticket = new Ticket(ticket_name, ticket_desc, this.conn);
+				tickets.add(ticket);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**
@@ -36,10 +58,20 @@ public class Project {
 	 * @param String desc
 	 */
 	public void edit(String name, LocalDate date, String desc) {
-		this.name = name;
-		this.date = date;
-		this.desc = desc;
 		// TODO: SQL UPDATE 
+		try {
+			// query
+			Statement statement = this.conn.createStatement();
+			statement.executeQuery(
+					"UPDATE project" +
+					"SET name=" + name +
+					"start_date=" + date + "," +
+					"desc=" + desc + 
+					"WHERE name=" + this.name
+			);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

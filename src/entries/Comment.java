@@ -7,17 +7,17 @@ public class Comment {
 	Connection conn;
 	
 	String name;
-	String content;
+	String body;
 	
-	public Comment(String name, String content, Connection conn) {
+	public Comment(String name, String body, Connection conn) {
 		this.name = name;
-		this.content = content;
+		this.body = body;
 		this.conn = conn;
 	}
 	
-	public void edit(String name, String desc) {
+	public void edit(String name, String body) {
 		this.name = name;
-		this.content = desc;
+		this.body = body;
 		// TODO: SQL UPDATE 
 	}
 }
