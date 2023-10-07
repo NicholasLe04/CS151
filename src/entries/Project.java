@@ -1,12 +1,11 @@
 package entries;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Project {
 	
@@ -30,7 +29,6 @@ public class Project {
 		this.date = date;
 		this.desc = desc;
 		this.conn = conn;
-		// TODO: SQL SELECT all tickets associated with this project, populate tickets ArrayList, pass conn to each of them
 		try {
 			// queries for all tickets
 			Statement statement = conn.createStatement();

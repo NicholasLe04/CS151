@@ -1,13 +1,11 @@
 package application;
 	
+import java.sql.Connection;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
-import java.sql.Connection;
-
-import entries.ProjectManager;
 
 public class Main extends Application {
 	@Override
