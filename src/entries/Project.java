@@ -11,7 +11,7 @@ public class Project {
 	
 	Connection conn;
 	
-	String name;
+	private String name;
 	LocalDate date;
 	String desc;
 	ArrayList<Ticket> tickets;
@@ -97,6 +97,14 @@ public class Project {
 		// TODO: call comment.delete on every comment in that ticket
 		// TODO: remove ticket from database and ArrayList
 		// planning to recursively remove from databases
+	}
+	
+	/**
+	 * Get name of Project.
+	 * @return String name of Project
+	 */
+	public String getName() {
+		return name;
 	}
 	
 	// TODO: REMOVE THIS IS FOR TESTING ONLY
