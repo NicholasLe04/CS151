@@ -6,18 +6,25 @@ public class Comment {
 	
 	Connection conn;
 	
-	String name;
-	String body;
+	private int id;
+	private String body;
 	
-	public Comment(String name, String body, Connection conn) {
-		this.name = name;
+	public Comment(int id, String body, Connection conn) {
+		this.id = id;
 		this.body = body;
 		this.conn = conn;
 	}
 	
-	public void edit(String name, String body) {
-		this.name = name;
+	public void edit(String body) {
 		this.body = body;
 		// TODO: SQL UPDATE 
+	}
+	
+	/**
+	 * Get body of Comment
+	 * @return String body of Comment
+	 */
+	public String getBody() {
+		return body;
 	}
 }

@@ -1,20 +1,22 @@
 package entries;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Project {
 	
 	Connection conn;
 	
+	private int id;
 	private String name;
-	LocalDate date;
-	String desc;
-	ArrayList<Ticket> tickets;
+	private LocalDate date;
+	private String desc;
+	private ArrayList<Ticket> tickets;
 	
 	/**
 	 * Create Project object in memory
@@ -32,7 +34,7 @@ public class Project {
 		// TODO: SQL SELECT all tickets associated with this project, populate tickets ArrayList, pass conn to each of them
 		try {
 			// queries for all tickets
-			Statement statement = this.conn.createStatement();
+			Statement statement = conn.createStatement();
 			ResultSet res = statement.executeQuery(
 				"SELECT * " +
 				"FROM ticket" + 
@@ -40,10 +42,10 @@ public class Project {
 			);
 			// places everything in ArrayList tickets
 			while (res.next()) {
-				String ticket_name = res.getString(1);
-				String ticket_desc = res.getString(2);
-				Ticket ticket = new Ticket(ticket_name, ticket_desc, this.conn);
-				tickets.add(ticket);
+				int ticket_id = res.getInt(1);
+				String ticket_name = res.getString(2);
+				String ticket_desc = res.getString(3);
+				tickets.add(new Ticket(ticket_id, ticket_name, ticket_desc, conn));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -61,26 +63,19 @@ public class Project {
 		// TODO: SQL UPDATE 
 		try {
 			// query
-			Statement statement = this.conn.createStatement();
+			Statement statement = conn.createStatement();
 			statement.executeQuery(
 					"UPDATE project" +
 					"SET project_name=" + name +
 					"start_date=" + date + "," +
 					"desc=" + desc + 
-					"WHERE project_name=" + this.name
+					"WHERE project_name=" + name
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/**
-	 * Return all tickets associated with this project
-	 * @return All tickets
-	 */
-	public ArrayList<Ticket> getTickets() {
-		return tickets;
-	}
 	
 	/**
 	 * Create a ticket associated with this project.
@@ -105,6 +100,30 @@ public class Project {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Get start date of Project.
+	 * @return LocalDate start date of Project
+	 */
+	public LocalDate getDate() {
+		return date;
+	}
+	
+	/**
+	 * Get description of Project.
+	 * @return String description of Project
+	 */
+	public String getDesc() {
+		return desc;
+	}
+	
+	/**
+	 * Get all tickets associated with this project
+	 * @return ArrayList all tickets
+	 */
+	public ArrayList<Ticket> getTickets() {
+		return tickets;
 	}
 	
 	// TODO: REMOVE THIS IS FOR TESTING ONLY

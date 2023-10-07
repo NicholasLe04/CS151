@@ -1,13 +1,13 @@
 package entries;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import java.time.LocalDate;
 
 public class ProjectManager {
 	
@@ -35,20 +35,11 @@ public class ProjectManager {
 				String name = res.getString(1);
 				String startDate = res.getString(2);
 				String desc = res.getString(3);
-				Project project = new Project(name, LocalDate.parse(startDate), desc, conn);
-				projects.add(project);
+				projects.add(new Project(name, LocalDate.parse(startDate), desc, conn));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}		
-	}
-	
-	/**
-	 * Get all Project objects.
-	 * @return ArrayList of all Project objects
-	 */
-	public ArrayList<Project> getProjects() {
-		return projects;
 	}
 	
 	/**
@@ -100,5 +91,13 @@ public class ProjectManager {
 				projects.remove(i);
 			}
 		}
+	}
+	
+	/**
+	 * Get all Project objects.
+	 * @return ArrayList of all Project objects
+	 */
+	public ArrayList<Project> getProjects() {
+		return projects;
 	}
 }
