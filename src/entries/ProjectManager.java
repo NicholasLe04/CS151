@@ -82,7 +82,7 @@ public class ProjectManager {
 			statement.executeUpdate(
 				"DELETE " +
 				"FROM project " +
-				"WHERE project_name=" + name
+				"WHERE project_name='" + name + "'"
 			);
 			
 		} catch (SQLException e) {

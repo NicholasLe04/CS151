@@ -35,7 +35,7 @@ public class Project {
 			ResultSet res = statement.executeQuery(
 				"SELECT * " +
 				"FROM ticket " + 
-				"WHERE project_name=" + name
+				"WHERE project_name='" + name + "'"
 			);
 			// places everything in ArrayList tickets
 			while (res.next()) {
@@ -63,7 +63,7 @@ public class Project {
 			statement.executeUpdate(
 				"UPDATE project " +
 				"SET project_name=" + name + ", start_date=" + date + ", desc=" + desc + " " +
-				"WHERE project_name=" + this.name
+				"WHERE project_name='" + this.name + "'"
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -140,7 +140,7 @@ public class Project {
 			statement.executeUpdate(
 				"DELETE " +
 				"FROM ticket " +
-				"WHERE ticket_id=" + toDelete.getId()
+				"WHERE ticket_id='" + toDelete.getId() + "'"
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();

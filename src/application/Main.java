@@ -1,41 +1,30 @@
 package application;
 	
-import java.awt.Dialog;
 import java.sql.Connection;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Month;
 
-import entries.Project;
 import entries.ProjectManager;
-
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.geometry.Pos;
-import javafx.geometry.Insets;
 
 public class Main extends Application {
 	
 	db.SQLConnector db = new db.SQLConnector();
 	Connection conn = db.getConnection();
-	entries.ProjectManager pm = new entries.ProjectManager(conn);
 	ProjectManager projectManager = new ProjectManager(conn);
 	
 	public static void main(String[] args) {

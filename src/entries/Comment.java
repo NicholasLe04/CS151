@@ -33,8 +33,8 @@ public class Comment {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"UPDATE comment " +
-				"SET comment_body=" + body + " " +
-				"WHERE comment_id=" + id
+				"SET comment_body='" + body + "' " +
+				"WHERE comment_id='" + id + "'"
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();
