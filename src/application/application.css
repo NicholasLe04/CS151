@@ -1,1 +1,49 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+/* Apply a dark background color to the entire dialog */
+.dialog {
+    -fx-background-color: #333;
+}
+
+/* Apply white text color for labels and buttons */
+.label {
+    -fx-text-fill: white;
+    -fx-font-family: "Helvetica";
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+}
+
+.button {
+ 	-fx-text-fill: white;
+    -fx-font-family: "Helvetica";
+}
+
+/* Apply a dark background color to text fields and text areas */
+.text-field {
+    -fx-background-color: #222;
+    -fx-text-fill: white;
+}
+
+.combo-box {
+	-fx-background-color: #222;
+    -fx-text-fill: white;
+} 
+
+.text-area {
+	-fx-background-color: #222;
+	-fx-control-inner-background: #222;
+    -fx-text-fill: white;
+}
+
+/* Style the buttons with a dark background and a light border */
+.button {
+    -fx-background-color: #444;
+}
+
+/* Style the buttons when hovered or focused */
+.button:hover, .button:focused {
+    -fx-background-color: #555;
+}
+
+/* Style the buttons when pressed */
+.button:pressed {
+    -fx-background-color: #666;
+}
