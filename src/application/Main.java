@@ -7,6 +7,7 @@ import java.time.Month;
 
 import entries.ProjectManager;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,9 +16,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -34,21 +37,43 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//New Project Button
-			Button newProject = new Button("New Project");
-			newProject.setOnAction(e -> newProjectDialog());
-			
-			
-			// javafx stuff TODO
-			StackPane root = new StackPane();
-			root.getChildren().add(newProject);
-		    root.setStyle("-fx-background-color: #333;");
-			Scene scene = new Scene(root,1200,675);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-			
+			// Main layout for the entire scene
+	        BorderPane root = new BorderPane();
+
+	        // Create a title label for "Projects" and style it
+	        Label titleLabel = new Label("Projects");
+	        titleLabel.getStyleClass().add("title-label");
+
+	        // Create a button with a plus icon inside a circle
+	        Button newProject = new Button("+");
+	        newProject.getStyleClass().addAll("circle-button", "plus-button");
+	        newProject.setOnAction(e -> newProjectDialog());
+
+	        // Create an HBox to hold the title label and center it
+	        HBox titleBox = new HBox(titleLabel);
+	        titleBox.setAlignment(Pos.TOP_LEFT);
+
+	        // Create a VBox to hold the button and align it to the bottom-right
+	        VBox buttonBox = new VBox(newProject);
+	        buttonBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+	        // Apply margins to the title and button
+	        BorderPane.setMargin(titleBox, new Insets(50, 50, 50, 50)); // Top, Right, Bottom, Left
+	        BorderPane.setMargin(buttonBox, new Insets(50, 50, 50, 50)); // Top, Right, Bottom, Left
+
+	        // Set the title label at the top-center and button at bottom-right
+	        root.setTop(titleBox);
+	        root.setBottom(buttonBox);
+
+	        //Set Background Color
+	        root.setStyle("-fx-background-color: #333;");
+	        
+	        Scene scene = new Scene(root, 1200, 675);
+	        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+
+	        primaryStage.setTitle("Project Management App");
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
