@@ -19,7 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -198,13 +197,8 @@ public class Main extends Application {
 	        }
 	    });
 
-
-
-
 	    dialogScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-
 	    dialogStage.setScene(dialogScene);
-
 	    dialogStage.showAndWait();
 	}
 

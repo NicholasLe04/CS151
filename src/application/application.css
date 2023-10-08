@@ -24,6 +24,10 @@
 
 .combo-box {
 	-fx-background-color: #222;
+}
+
+.combo-box .list-cell {
+	-fx-background-color: #222;
     -fx-text-fill: white;
 } 
 
