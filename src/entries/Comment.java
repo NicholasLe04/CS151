@@ -3,7 +3,7 @@ package entries;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Comment {
 	
@@ -11,7 +11,7 @@ public class Comment {
 	
 	private int id;
 	private String body;
-	private LocalDate timestamp;
+	private LocalDateTime timestamp;
 	
 	/**
 	 * Create Comment object in memory
@@ -19,7 +19,7 @@ public class Comment {
 	 * @param body
 	 * @param conn
 	 */
-	public Comment(int id, String body, LocalDate timestamp, Connection conn) {
+	public Comment(int id, String body, LocalDateTime timestamp, Connection conn) {
 		this.id = id;
 		this.body = body;
 		this.conn = conn;
@@ -64,9 +64,9 @@ public class Comment {
 	
 	/**
 	 * Get timestamp of Comment.
-	 * @return LocalDate timestamp of Comment
+	 * @return LocalDateTime timestamp of Comment
 	 */
-	public LocalDate getDate() {
+	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 }

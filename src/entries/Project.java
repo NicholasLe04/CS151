@@ -62,7 +62,7 @@ public class Project {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"UPDATE project " +
-				"SET project_name=" + name + ", start_date=" + date + ", desc=" + desc + " " +
+				"SET project_name='" + name + "', start_date='" + date + "', desc='" + desc + "' " +
 				"WHERE project_name='" + this.name + "'"
 			);
 		} catch(SQLException e) {

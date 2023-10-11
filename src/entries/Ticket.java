@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Ticket {
@@ -33,7 +33,7 @@ public class Ticket {
 			// places everything in ArrayList comments
 			while (res.next()) {
 				int commentId = res.getInt(1);
-				LocalDate timestamp = LocalDate.parse(res.getString(2));
+				LocalDateTime timestamp = LocalDateTime.parse(res.getString(2));
 				String commentBody = res.getString(3);
 				comments.add(new Comment(commentId, commentBody, timestamp, conn));
 			}
@@ -43,9 +43,20 @@ public class Ticket {
 	}
 	
 	public void edit(String name, String desc) {
+		// query
+		try {
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(
+				"UPDATE ticket " +
+				"SET ticket_name='" + name + "', desc='" + desc + "' " +
+				"WHERE ticket_id='" + this.id + "'"
+			);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		// modify object
 		this.name = name;
 		this.desc = desc;
-		// TODO: SQL UPDATE 
 	}
 	
 	/**
@@ -83,15 +94,38 @@ public class Ticket {
 	/**
 	 * Create a comment associated with this project.
 	 */
-	public void createComment(String name, String content) {
-		// TODO: SQL INSERT
-		// TODO: create new comment object, passing conn
+	public void createComment(String commentContent) {
+		int commentId = 0;
+		try {
+			Statement statement = conn.createStatement();
+			ResultSet res = statement.executeQuery("SELECT last_insert_rowid() FROM comment");
+			statement.executeUpdate(
+				"INSERT INTO comment(comment_body, ticket_id) " +
+				"VALUES('" + commentContent + "', '" + id + "')"
+			);
+			commentId = res.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// add ticket to memory
+		comments.add(new Comment(commentId, commentContent, LocalDateTime.now(), conn));
 	}
 	
 	/**
 	 * Delete a comment associated with this project.
 	 */
-	public void deleteComment(String name) {
-		// TODO: remove comment from database and ArrayList
+	public void deleteComment(Comment toDelete) {
+		try {
+			Statement statement = conn.createStatement();
+			statement.executeUpdate(
+				"DELETE " +
+				"FROM comment " +
+				"WHERE comment_id='" + toDelete.getId() + "'"
+			);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		// remove from memory
+		comments.remove(toDelete);
 	}
 }
