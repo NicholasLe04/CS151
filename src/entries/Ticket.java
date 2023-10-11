@@ -1,6 +1,10 @@
 package entries;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Ticket {
@@ -18,7 +22,24 @@ public class Ticket {
 		this.name = name;
 		this.desc = desc;
 		this.conn = conn;
-		// TODO: SQL SELECT all comments associated with this ticket, populate comments ArrayList, pass conn to each of them
+		try {
+			// queries for all comments
+			Statement statement = conn.createStatement();
+			ResultSet res = statement.executeQuery(
+				"SELECT * " +
+				"FROM comment " + 
+				"WHERE ticket_id='" + name + "'"
+			);
+			// places everything in ArrayList comments
+			while (res.next()) {
+				int commentId = res.getInt(1);
+				LocalDate timestamp = LocalDate.parse(res.getString(2));
+				String commentBody = res.getString(3);
+				comments.add(new Comment(commentId, commentBody, timestamp, conn));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void edit(String name, String desc) {
