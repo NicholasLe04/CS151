@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -92,15 +93,9 @@ public class Main extends Application {
 
 	    // Create an HBox to hold the date-related UI elements
 	    HBox dateBox = new HBox(10);
-	    ComboBox<String> monthComboBox = new ComboBox<>();
-	    monthComboBox.getItems().addAll("January", "February", "March", "April", "May", "June", "July",
-	            "August", "September", "October", "November", "December");
-	    ComboBox<String> dayComboBox = new ComboBox<>();
-	    dayComboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-	            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-	            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31");
-	    TextField yearField = new TextField();
-	    dateBox.getChildren().addAll(monthComboBox, dayComboBox, yearField);
+	    DatePicker datePicker = new DatePicker();
+	    datePicker.setValue(LocalDate.now());
+	    dateBox.getChildren().add(datePicker);
 
 	    TextArea descriptionArea = new TextArea();
 
@@ -143,9 +138,7 @@ public class Main extends Application {
 	    // Set the action for the "Create" button with validation
 	    createButton.setOnAction(e -> {
 	        String projectName = titleField.getText();
-	        String selectedMonth = monthComboBox.getValue();
-	        String selectedDay = dayComboBox.getValue();
-	        String selectedYear = yearField.getText();
+	        LocalDate selectedDate = datePicker.getValue();
 	        String projectDescription = descriptionArea.getText();
 
 	        // Initialize an error message
@@ -159,33 +152,11 @@ public class Main extends Application {
 	            titleField.setStyle(null); // Remove the red border if valid
 	        }
 
-	        if (selectedMonth == null || selectedDay == null || selectedYear.isEmpty()) {
-	            errorMessage += "Month, Day, and Year fields are required.\n";
-	            monthComboBox.setStyle("-fx-border-color: red;");
-	            dayComboBox.setStyle("-fx-border-color: red;");
-	            yearField.setStyle("-fx-border-color: red;");
-	        } else {
-	            // Check if the year is a valid integer
-	            try {
-	                int year = Integer.parseInt(selectedYear);
-	                yearField.setStyle(null); // Remove the red border if valid
+	        // Add the Project to the ProjectManager
+	        projectManager.createProject(projectName, selectedDate, projectDescription);
 
-	                // Create a LocalDate object from the selected date components
-	                LocalDate projectDate = LocalDate.of(year, Month.valueOf(selectedMonth.toUpperCase()), Integer.parseInt(selectedDay));
-
-	                // Add the Project to the ProjectManager
-	                projectManager.createProject(projectName, projectDate, projectDescription);
-
-	                // Close the dialog
-	                dialogStage.close();
-	            } catch (NumberFormatException | DateTimeException ex) {
-	                errorMessage += "Year must be a valid integer, and date must be valid.\n";
-	                yearField.setStyle("-fx-border-color: red;");
-	            }
-
-	            monthComboBox.setStyle(null); // Remove the red border if valid
-	            dayComboBox.setStyle(null); // Remove the red border if valid
-	        }
+	        // Close the dialog
+	        dialogStage.close();
 
 	        // Display error message in a dialog
 	        if (!errorMessage.isEmpty()) {
