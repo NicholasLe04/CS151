@@ -11,10 +11,18 @@ public class ProjectDAO {
 	
 	Connection conn;
 
+	/**
+	 * Create ProjectDAO object using Connection conn.
+	 * @param Connection conn
+	 */
 	public ProjectDAO(Connection conn) {
 		this.conn = conn;
 	}
 
+	/**
+	 * Get persistent Projects
+	 * @return ArrayList<Project> projects
+	 */
 	public ArrayList<Project> getProjects() {
 		ArrayList<Project> toReturn = new ArrayList<>();
 		try {
@@ -37,6 +45,10 @@ public class ProjectDAO {
 		return toReturn;
 	}
 	
+	/**
+	 * Persist a Project.
+	 * @param Project toPersist
+	 */
 	public void createProject(Project project) {
 		// add project to db
 		try {
@@ -50,6 +62,13 @@ public class ProjectDAO {
 		}
 	}
 
+	/**
+	 * Persist a Project.
+	 * @param Project project
+	 * @param String newName
+	 * @param LocalDate newDate
+	 * @param String newDesc
+	 */
 	public void edit(Project project, String newName, LocalDate newDate, String newDesc) {
 		// update ticket in db
 		try {
@@ -68,6 +87,10 @@ public class ProjectDAO {
 		project.setDesc(newDesc);
 	}
 
+	/**
+	 * Delete a Project.
+	 * @param project
+	 */
 	public void deleteProject(Project project) {
 		// remove project from db
 		try {

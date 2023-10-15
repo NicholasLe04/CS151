@@ -8,6 +8,12 @@ public class Project {
 	private LocalDate date;
 	private String desc;
 
+	/**
+	 * Create project.
+	 * @param String name
+	 * @param LocalDate date
+	 * @param String desc
+	 */
 	public Project(String name, LocalDate date, String desc) {
 		this.name = name;
 		this.date = date;

@@ -11,10 +11,19 @@ public class CommentDAO {
 	
 	Connection conn;
 	
+	/**
+	 * Create CommentDAO object using Connection conn.
+	 * @param Connection conn
+	 */
 	public CommentDAO(Connection conn) {
 		this.conn = conn;
 	}
 	
+	/**
+	 * Get persistent Comments belonging to ticket.
+	 * @param Ticket ticket
+	 * @return ArrayList<Comment> comments
+	 */
 	public ArrayList<Comment> getComments(Ticket ticket) {
 		ArrayList<Comment> comments = new ArrayList<>();
 		try {
@@ -38,6 +47,10 @@ public class CommentDAO {
 		return comments;
 	}
 
+	/**
+	 * Persist a Comment.
+	 * @param Comment toPersist
+	 */
 	public void createComment(Comment comment) {
 		try {
 			Statement statement = conn.createStatement();
@@ -59,8 +72,12 @@ public class CommentDAO {
 		}
 	}
 	
+	/**
+	 * Edit a Comment.
+	 * @param Comment toEdit
+	 * @param String newBody 
+	 */
 	public void edit(Comment comment, String newBody) {
-		// update ticket in db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
@@ -74,9 +91,12 @@ public class CommentDAO {
 		// update Comment object
 		comment.setBody(newBody);
 	}
-
+	
+	/**
+	 * Delete a comment.
+	 * @param Comment toDelete
+	 */
 	public void deleteComment(Comment comment) {
-		// remove ticket from db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(

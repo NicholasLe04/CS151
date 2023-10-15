@@ -10,6 +10,10 @@ public class TicketDAO {
 	
 	Connection conn;
 
+	/**
+	 * Create TicketDAO object using Connection conn.
+	 * @param conn
+	 */
 	public TicketDAO(Connection conn) {
 		this.conn = conn;
 	}
@@ -37,6 +41,10 @@ public class TicketDAO {
 		return tickets;
 	}
 
+	/**
+	 * Persist a Ticket.
+	 * @param Ticket toPersist
+	 */
 	public void createTicket(Ticket ticket) {
 		try {
 			Statement statement = conn.createStatement();
@@ -52,6 +60,12 @@ public class TicketDAO {
 		}
 	}
 
+	/**
+	 * Edit a ticket.
+	 * @param ticket
+	 * @param newName
+	 * @param newDesc
+	 */
 	public void edit(Ticket ticket, String newName, String newDesc) {
 		// update ticket in db
 		try {
@@ -69,8 +83,11 @@ public class TicketDAO {
 		ticket.setDesc(newDesc);
 	}
 
+	/**
+	 * Delete a ticket.
+	 * @param Ticket toDelete
+	 */
 	public void deleteTicket(Ticket ticket) {
-		// remove ticket from db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
