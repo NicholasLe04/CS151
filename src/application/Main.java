@@ -5,7 +5,6 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Month;
 
-import entries.ProjectManager;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,7 +27,7 @@ public class Main extends Application {
 	
 	db.SQLConnector db = new db.SQLConnector();
 	Connection conn = db.getConnection();
-	ProjectManager projectManager = new ProjectManager(conn);
+	ProjectManager projectManager = new ProjectManager(conn); // TODO: CHANGE
 	
 	public static void main(String[] args) {
 		launch(args);

@@ -1,72 +1,51 @@
 package entries;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 
 public class Comment {
-	
-	Connection conn;
-	
+		
 	private int id;
 	private String body;
 	private LocalDateTime timestamp;
-	
-	/**
-	 * Create Comment object in memory
-	 * @param id
-	 * @param body
-	 * @param conn
-	 */
-	public Comment(int id, String body, LocalDateTime timestamp, Connection conn) {
+	private Ticket ticket;
+
+	public Comment(int id, String body, LocalDateTime timestamp, Ticket ticket) {
 		this.id = id;
 		this.body = body;
-		this.conn = conn;
 		this.timestamp = timestamp;
+		this.ticket = ticket;
 	}
 	
-	/**
-	 * Edit this ticket.
-	 * @param String body
-	 */
-	public void edit(String body) {
-		// edit comment in db
-		try {
-			Statement statement = conn.createStatement();
-			statement.executeUpdate(
-				"UPDATE comment " +
-				"SET comment_body='" + body + "' " +
-				"WHERE comment_id='" + id + "'"
-			);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		// modify object
+	public Comment(String body, Ticket ticket) {
 		this.body = body;
+		this.ticket = ticket;
 	}
-	
-	/**
-	 * Get id of Comment.
-	 * @return int id of Comment
-	 */
+
 	public int getId() {
 		return id;
 	}
 	
-	/**
-	 * Get body of Comment.
-	 * @return String body of Comment
-	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getBody() {
 		return body;
 	}
 	
-	/**
-	 * Get timestamp of Comment.
-	 * @return LocalDateTime timestamp of Comment
-	 */
+	public void setBody(String body) {
+		this.body = body;
+	}
+
 	public LocalDateTime getTimestamp() {
 		return timestamp;
+	}
+	
+	public void setTimestamp(LocalDateTime timestamp) {
+		this.timestamp = timestamp;
+	}
+	
+	public Ticket getTicket() {
+		return ticket;
 	}
 }
