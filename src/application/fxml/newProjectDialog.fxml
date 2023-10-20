@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<GridPane hgap="10" vgap="10" alignment="center">
+	<Label GridPane.columnIndex="0" GridPane.rowIndex="0">Project Title:</Label>
+	<TextField GridPane.columnIndex="0" GridPane.rowIndex="1"></TextField>
+	<Label GridPane.columnIndex="0" GridPane.rowIndex="2">Date:</Label>
+	<DatePicker GridPane.columnIndex="0" GridPane.rowIndex="3"></DatePicker>
+	<Label GridPane.columnIndex="0" GridPane.rowIndex="4">Description:</Label>
+	<TextArea GridPane.columnIndex="0" GridPane.rowIndex="5"></TextArea>
+	<HBox GridPane.columnIndex="0" GridPane.rowIndex="6" alignment="BOTTOM_RIGHT">
+		<Button>Cancel</Button>
+		<Button>Create</Button>
+	</HBox>
+</GridPane>

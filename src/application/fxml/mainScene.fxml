@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.MainController">
+	<top>
+		<HBox>
+			<Label>Projects</Label>
+		</HBox>
+	</top>
+	<center>
+		<GridPane>
+			<Label>hi</Label>
+		</GridPane>
+	</center>
+	<bottom>
+		<VBox>
+			<Button onAction="#createProject">+</Button>
+		</VBox>
+	</bottom>
+</BorderPane>
