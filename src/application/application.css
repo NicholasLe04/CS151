@@ -51,3 +51,14 @@
 .button:pressed {
     -fx-background-color: #666;
 }
+
+/* Style the project tile */
+.project-tile {
+	-fx-background-color: dodgerblue;
+	-fx-padding: 20;
+}
+
+.project-date {
+	-fx-fill: white;
+}
+
