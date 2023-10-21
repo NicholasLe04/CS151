@@ -1,0 +1,45 @@
+.root {
+    -fx-background-color: #333333;
+}
+
+.header {
+    -fx-padding: 25 0 10 75;
+    -fx-background-color: #3333ff;
+    /* fix color */
+}
+
+.titleLabel {
+    -fx-text-fill: white;
+    -fx-font-family: "Helvetica";
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
+}
+
+.newProjectButton {
+    -fx-text-fill: #333333;
+    -fx-font-size: 20px;
+
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Helvetica";
+    -fx-pref-width: 50px;
+    -fx-pref-height: 50px;
+    -fx-background-radius: 25px;
+}
+
+.newProjectButton:hover {
+    -fx-background-color: #cccccc;
+}
+
+.newProjectButton:pressed {
+    -fx-background-color: #aaaaaa;
+}
+
+.buttonBox {
+    /*
+    read: "-fx-margin: 30px"
+    fxml does not have margin as a property for some reason 
+    */
+    -fx-padding: 30px;
+    -fx-border-insets: 30px;
+    -fx-background-insets: 30px;
+}

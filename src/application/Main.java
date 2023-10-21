@@ -15,11 +15,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/fxml/mainScene.fxml"));
+			loader.setLocation(getClass().getResource("/application/fxml/main/mainScene.fxml"));
 			Parent root = loader.load();
 			
 			primaryStage.setTitle("Stomp");
-			primaryStage.setScene(new Scene(root));
+			primaryStage.setScene(new Scene(root, 1200, 675));
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

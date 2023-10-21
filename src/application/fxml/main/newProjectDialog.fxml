@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.MainController" stylesheets="@newProjectDialog.css">
+	<top>
+		<HBox styleClass="header">
+			<Label styleClass="titleLabel">New Project</Label>
+		</HBox>
+	</top>
+	<center>
+		<VBox styleClass="form">
+			<VBox styleClass="projectTitle">
+				<Label styleClass="projectTitleLabel">Project Title:</Label>
+				<TextField fx:id="title" styleClass="projectTitleField"/>
+			</VBox>
+			<VBox styleClass="projectDate">
+				<Label styleClass="projectDateLabel">Date:</Label>
+				<DatePicker fx:id="date" styleClass="projectDateField"/> <!-- add default value using controller -->
+			</VBox>
+			<VBox styleClass="projectDesc">
+				<Label styleClass="projectDescLabel">Description:</Label>
+				<TextArea fx:id="desc" styleClass="projectDescField"/>
+			</VBox>
+		</VBox>
+	</center>
+	<bottom>
+		<HBox styleClass="buttonBox" alignment="BOTTOM_RIGHT">
+			<Button styleClass="cancelButton">Cancel</Button>
+			<Button styleClass="createButton">Create</Button>
+		</HBox>
+	</bottom>
+</BorderPane>

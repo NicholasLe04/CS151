@@ -12,7 +12,7 @@
 }
 
 .button {
- 	-fx-text-fill: white;
+    -fx-text-fill: white;
     -fx-font-family: "Helvetica";
 }
 
@@ -23,17 +23,17 @@
 }
 
 .combo-box {
-	-fx-background-color: #222;
+    -fx-background-color: #222;
 }
 
 .combo-box .list-cell {
-	-fx-background-color: #222;
+    -fx-background-color: #222;
     -fx-text-fill: white;
-} 
+}
 
 .text-area {
-	-fx-background-color: #222;
-	-fx-control-inner-background: #222;
+    -fx-background-color: #222;
+    -fx-control-inner-background: #222;
     -fx-text-fill: white;
 }
 
@@ -43,7 +43,8 @@
 }
 
 /* Style the buttons when hovered or focused */
-.button:hover, .button:focused {
+.button:hover,
+.button:focused {
     -fx-background-color: #555;
 }
 
@@ -54,11 +55,10 @@
 
 /* Style the project tile */
 .project-tile {
-	-fx-background-color: dodgerblue;
-	-fx-padding: 20;
+    -fx-background-color: dodgerblue;
+    -fx-padding: 20;
 }
 
 .project-date {
-	-fx-fill: white;
+    -fx-fill: white;
 }
-
