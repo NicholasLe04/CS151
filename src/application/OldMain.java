@@ -195,19 +195,19 @@ public class OldMain extends Application {
 
 	        // Add the Project to the ProjectManager
 	        projectDAO.createProject(new Project(projectName, selectedDate, projectDescription));
-	        updateProjectGrid(root);
+				updateProjectGrid(root);
 
-	        // Close the dialog
-	        dialogStage.close();
+				// Close the dialog
+				dialogStage.close();
 
-	        // Display error message in a dialog
-	        if (!errorMessage.isEmpty()) {
-	            Alert alert = new Alert(Alert.AlertType.ERROR);
-	            alert.setTitle("Validation Error");
-	            alert.setHeaderText("Please correct the following errors:");
-	            alert.setContentText(errorMessage);
-	            alert.showAndWait();
-	        }
+				// Display error message in a dialog
+				if (!errorMessage.isEmpty()) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setTitle("Validation Error");
+					alert.setHeaderText("Please correct the following errors:");
+					alert.setContentText(errorMessage);
+					alert.showAndWait();
+				}
 	    });
 
 	    dialogScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

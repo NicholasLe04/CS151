@@ -59,3 +59,7 @@
 	-fx-text-fill: #ffffff;
 	-fx-focus-color: transparent;
 }
+
+.errorMessage {
+	-fx-text-fill: #ff4444;
+}

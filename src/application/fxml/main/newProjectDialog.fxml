@@ -17,16 +17,28 @@
 	<center>
 		<VBox styleClass="form">
 			<VBox styleClass="projectTitle">
-				<Label styleClass="projectTitleLabel">Project Title:</Label>
-				<TextField fx:id="title" styleClass="projectTitleField"/>
+				<HBox>
+					<Label styleClass="projectTitleLabel">Project Title:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="titleError" styleClass="errorMessage"></Label>
+				</HBox>
+				<TextField fx:id="titleField" styleClass="projectTitleField"/>
 			</VBox>
 			<VBox styleClass="projectDate">
-				<Label styleClass="projectDateLabel">Date:</Label>
-				<DatePicker fx:id="date" styleClass="projectDateField"/> <!-- add default value using controller -->
+				<HBox>
+					<Label styleClass="projectDateLabel">Date:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="dateError" styleClass="errorMessage" alignment="CENTER_RIGHT"></Label>
+				</HBox>
+				<DatePicker fx:id="dateField" styleClass="projectDateField"/> <!-- add default value using controller -->
 			</VBox>
 			<VBox styleClass="projectDesc">
-				<Label styleClass="projectDescLabel">Description:</Label>
-				<TextArea fx:id="desc" styleClass="projectDescField"/>
+				<HBox>
+					<Label styleClass="projectDescLabel">Description:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="descError" styleClass="errorMessage" alignment="CENTER_RIGHT"></Label>
+				</HBox>
+				<TextArea fx:id="descField" styleClass="projectDescField"/>
 			</VBox>
 		</VBox>
 	</center>

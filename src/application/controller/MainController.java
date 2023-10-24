@@ -42,6 +42,17 @@ public class MainController {
 	}
 
 	public void showProjects() {
-		
+		ProjectDAO projectDAO = new ProjectDAO(conn);
+		try {
+			for (Project project : projectDAO.getProjects()) {
+				FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/application/fxml/project/projectCard.fxml"));
+				Parent projectNode = projectLoader.load();
+				
+				// TODO: modify the projectNode here
+				projectGrid.getChildren().add(projectLoader.load());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
