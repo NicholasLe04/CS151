@@ -38,7 +38,6 @@ public class SQLConnector {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection("jdbc:sqlite:" + directory + "/data/data.db");
-			if (conn != null) System.out.println("Database connected successfully!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

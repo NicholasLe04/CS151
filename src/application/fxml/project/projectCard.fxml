@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<VBox styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ProjectController" stylesheets="@projectCard.css">
+    <VBox>
+        <HBox styleClass="header">
+            <Label fx:id="title">Project Title 1</Label> <!-- todo -->
+            <Button>edit</Button>
+            <Button>stomp</Button>
+        </HBox>
+        <Label>Started on</Label>
+        <Label>Project Description:</Label>
+    </VBox>
+    <VBox>
+        <Label>tickets here</Label>
+    </VBox>
+</VBox>

@@ -30,7 +30,7 @@
     -fx-background-color: #cccccc;
 }
 
-.newProjectButton:pressed {
+.newProjectButton:disabled {
     -fx-background-color: #aaaaaa;
 }
 

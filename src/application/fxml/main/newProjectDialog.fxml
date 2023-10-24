@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.MainController" stylesheets="@newProjectDialog.css">
+<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.CreateProjectController" stylesheets="@newProjectDialog.css">
 	<top>
 		<HBox styleClass="header">
 			<Label styleClass="titleLabel">New Project</Label>
@@ -32,8 +32,8 @@
 	</center>
 	<bottom>
 		<HBox styleClass="buttonBox" alignment="BOTTOM_RIGHT">
-			<Button styleClass="cancelButton">Cancel</Button>
-			<Button styleClass="createButton">Create</Button>
+			<Button fx:id="cancelButton" styleClass="cancelButton" onAction="#closeDialog">Cancel</Button>
+			<Button fx:id="createButton" styleClass="createButton" onAction="#createProject">Create</Button>
 		</HBox>
 	</bottom>
 </BorderPane>

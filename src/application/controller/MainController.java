@@ -1,29 +1,47 @@
 package application.controller;
 
 import java.io.IOException;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import java.sql.Connection;
+import db.SQLConnector;
+import entries.Project;
+import entries.ProjectDAO;
+import javafx.fxml.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.*;
 
 public class MainController {
 	
-	public void createProject() {
+	private Connection conn;
+	
+	@FXML public Button newProjectButton;
+	@FXML public GridPane projectGrid;
+	
+	@FXML
+	public void initialize() {
+		conn = new SQLConnector().getConnection();
+	}
+	
+	public void showCreateProjectDialog() {
 		try {
+			// load fxml
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/application/fxml/main/newProjectDialog.fxml"));
 			Parent root = loader.load();
-			
+			// open new window
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root, 800, 500));
+			stage.setUserData(newProjectButton);
 			stage.show();
+			// disable button
+			newProjectButton.setDisable(true);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void getProjects() {
-		// TODO: i actually have no idea how to use this. in js u would run this right after load and populate with that but idk
+
+	public void showProjects() {
+		
 	}
 }

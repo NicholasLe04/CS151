@@ -15,13 +15,13 @@
 		</HBox>
 	</top>
 	<center>
-		<GridPane hgap="10" vgap="10">
+		<GridPane fx:id="projectGrid" hgap="10" vgap="10">
 			<!-- fetch projects from db and display -->
 		</GridPane>
 	</center>
 	<bottom>
 		<VBox styleClass="buttonBox" alignment="BOTTOM_RIGHT">
-			<Button styleClass="newProjectButton" onAction="#createProject">+</Button> <!-- disable button when clicked -->
+			<Button fx:id="newProjectButton" styleClass="newProjectButton" onAction="#showCreateProjectDialog">+</Button> <!-- disable button when clicked -->
 		</VBox>
 	</bottom>
 </BorderPane>
