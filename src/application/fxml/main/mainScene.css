@@ -1,21 +1,21 @@
-.root {
+.mainRoot {
     -fx-background-color: #333333;
 }
 
-.header {
+.mainHeader {
     -fx-padding: 25 0 10 75;
     -fx-background-color: #3333ff;
     /* fix color */
 }
 
-.titleLabel {
+.mainTitleLabel {
     -fx-text-fill: white;
     -fx-font-family: "Helvetica";
     -fx-font-weight: bold;
     -fx-font-size: 40;
 }
 
-.newProjectButton {
+.mainNewProjectButton {
     -fx-text-fill: #333333;
     -fx-font-size: 20px;
 
@@ -26,15 +26,15 @@
     -fx-background-radius: 25px;
 }
 
-.newProjectButton:hover {
+.mainNewProjectButton:hover {
     -fx-background-color: #cccccc;
 }
 
-.newProjectButton:disabled {
+.mainNewProjectButton:disabled {
     -fx-background-color: #bbbbbb;
 }
 
-.buttonBox {
+.mainButtonBox {
     /*
     read: "-fx-margin: 30px"
     fxml does not have margin as a property for some reason 
@@ -42,4 +42,8 @@
     -fx-padding: 30px;
     -fx-border-insets: 30px;
     -fx-background-insets: 30px;
+}
+
+.mainProjectGrid {
+	-fx-padding: 50 50 50 50;
 }

@@ -1,6 +1,9 @@
-package application.controller;
+package application.controller.main;
 
 import javafx.fxml.FXML;
+import application.controller.main.MainController;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
@@ -26,23 +29,19 @@ public class CreateProjectController {
 
 	@FXML public Button cancelButton;
     @FXML public Button createButton;
+    
 
     @FXML
 	public void initialize() {
 		conn = new SQLConnector().getConnection();
+		dateField.setValue(LocalDate.now());
 	}
 
     public void closeDialog() {
-
-
-    	// get this stage
-		Stage stage = (Stage) createButton.getScene().getWindow();
-		// get newProjectButton that was sent from MainController. jfx does not have props so idk what to do.
-		Button newProjectButton = (Button) stage.getUserData();
-		// enable newProjectButton
-		newProjectButton.setDisable(false);
-		// close window
-		stage.close();
+		Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
+		MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
+		mainController.setCreateButtonState(true);								// enable newProjectButton
+		stage.close();															// close window
 	}
 
     public void createProject() {
@@ -57,16 +56,17 @@ public class CreateProjectController {
 		else dateError.setText("");
 		// if everything is good, add the project
 		if (!title.isEmpty() && date != null) {
-			ProjectDAO projectDAO = new ProjectDAO(conn);
+			
+			ProjectDAO projectDAO = new ProjectDAO(conn);							// add project
 			projectDAO.createProject(new Project(title, date, desc));
-			// get this stage
-			Stage stage = (Stage) createButton.getScene().getWindow();
-			// get newProjectButton that was sent from MainController. jfx does not have props so idk what to do.
-			Button newProjectButton = (Button) stage.getUserData();
-			// enable newProjectButton
-			newProjectButton.setDisable(false);
-			// close window
-			stage.close();
+			
+			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
+			MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
+			
+			mainController.showProjects();											// reload main window
+			mainController.setCreateButtonState(true);								// enable newProjectButton
+			
+			stage.close();															// close window
 		}
     }
 }

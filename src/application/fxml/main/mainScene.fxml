@@ -8,20 +8,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.MainController" stylesheets="@mainScene.css">	
+<BorderPane styleClass="mainRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.main.MainController" stylesheets="@mainScene.css">	
 	<top>
-		<HBox styleClass="header">
-			<Label styleClass="titleLabel">Projects</Label>
+		<HBox styleClass="mainHeader">
+			<Label styleClass="mainTitleLabel">Projects</Label>
 		</HBox>
 	</top>
 	<center>
-		<GridPane fx:id="projectGrid" hgap="10" vgap="10">
-			<!-- fetch projects from db and display -->
+		<GridPane fx:id="projectGrid" styleClass="mainProjectGrid" hgap="10" vgap="10">
 		</GridPane>
 	</center>
 	<bottom>
-		<VBox styleClass="buttonBox" alignment="BOTTOM_RIGHT">
-			<Button fx:id="newProjectButton" styleClass="newProjectButton" onAction="#showCreateProjectDialog">+</Button> <!-- disable button when clicked -->
+		<VBox styleClass="mainButtonBox" alignment="BOTTOM_RIGHT">
+			<Button fx:id="newProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
 		</VBox>
 	</bottom>
 </BorderPane>

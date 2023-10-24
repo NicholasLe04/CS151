@@ -8,15 +8,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<VBox styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ProjectController" stylesheets="@projectCard.css">
-    <VBox>
-        <HBox styleClass="header">
-            <Label fx:id="title">Project Title 1</Label> <!-- todo -->
+<VBox styleClass="projectRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.project.ProjectController" stylesheets="@projectCard.css">
+	<userData>
+		<fx:reference source="controller" />
+	</userData>
+    <VBox styleClass="projectHeader">
+        <HBox>
+            <Label fx:id="title" styleClass="projectTitle">Project Title 1</Label>
             <Button>edit</Button>
             <Button>stomp</Button>
         </HBox>
-        <Label>Started on</Label>
-        <Label>Project Description:</Label>
+        <Label fx:id="date" styleClass="projectDate">Started on</Label>
+        <Label fx:id="desc" styleClass="projectDesc">asdfa</Label>
     </VBox>
     <VBox>
         <Label>tickets here</Label>

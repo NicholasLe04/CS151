@@ -1,3 +1,7 @@
-.root {
-    background-color: #444444;
+.projectRoot {
+    -fx-background-color: #444444;
+}
+
+.projectHeader {
+	-fx-background-color: #3333ff;
 }
