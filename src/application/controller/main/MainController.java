@@ -24,7 +24,7 @@ public class MainController {
 	@FXML
 	public void initialize() {
 		conn = new SQLConnector().getConnection();
-		showProjects();
+		updateProjects();
 	}
 	
 	public void showCreateProjectDialog() {
@@ -47,11 +47,12 @@ public class MainController {
 		}
 	}
 
-	public void showProjects() {
+	public void updateProjects() {
 		ProjectDAO projectDAO = new ProjectDAO(conn);
 		ArrayList<Project> projects = projectDAO.getProjects();
 		
 		try {
+			projectGrid.getChildren().clear();
 			for (int i = 0; i < projects.size(); i++) {
 				// load project fxml
 				FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/application/fxml/project/projectCard.fxml"));
@@ -61,6 +62,8 @@ public class MainController {
 				controller.setName(projects.get(i).getName());
 				controller.setDate(projects.get(i).getDate());
 				controller.setDesc(projects.get(i).getDesc());
+				// this passes the MainController to the projectCard
+				projectNode.setUserData(this);
 				// add project
 				projectGrid.add(projectNode, i % 4, i / 4);
 			}

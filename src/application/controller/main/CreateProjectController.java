@@ -63,7 +63,7 @@ public class CreateProjectController {
 			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 			MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
 			
-			mainController.showProjects();											// reload main window
+			mainController.updateProjects();											// reload main window
 			mainController.setCreateButtonState(true);								// enable newProjectButton
 			
 			stage.close();															// close window

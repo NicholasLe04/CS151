@@ -1,11 +1,25 @@
 .projectRoot {
     -fx-background-color: #444444;
+    -fx-background-radius: 20px;
 }
 
 .projectHeader {
 	-fx-background-color: #3333ff;
+	-fx-padding: 20px;
+	-fx-background-radius: 20 20 0 0;
 }
 
 .projectTitle {
-	
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 30px;
+}
+
+.projectDate {
+	-fx-font-size: 16px;
+	-fx-text-fill: #ffffff;
+}
+
+.projectDesc {
+	-fx-font-size: 16px;
+	-fx-text-fill: #ffffff;
 }
