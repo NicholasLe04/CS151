@@ -26,7 +26,7 @@ public class MainController {
 	
 	@FXML
 	public void initialize() {
-		conn = new SQLConnector().getConnection();
+		conn = SQLConnector.getInstance().getConnection();
 		projectDAO = new ProjectDAO(conn);
 		updateProjects();
 	}

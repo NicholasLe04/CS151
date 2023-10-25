@@ -11,13 +11,13 @@ import java.sql.Statement;
 
 public class SQLConnector {
 	
+	private static SQLConnector instance = null;
 	private Connection conn;
 
 	/**
 	 * Establish connection with SQLite DB. To be run only once on application startup.
 	 */
-	public SQLConnector() {
-		
+	private SQLConnector() {
 		// get directory of jar file
 		String directory = "";
 		try {
@@ -75,6 +75,11 @@ public class SQLConnector {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static SQLConnector getInstance() {
+		if (instance == null) instance = new SQLConnector();
+		return instance;
 	}
 	
 	/**

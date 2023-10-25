@@ -18,7 +18,7 @@ public class TicketController {
 	
 	@FXML
 	public void initialize() {
-		conn = new SQLConnector().getConnection();
+		conn = SQLConnector.getInstance().getConnection();
 		ticketDAO = new TicketDAO(conn);
 		commentDAO = new CommentDAO(conn);
 	}

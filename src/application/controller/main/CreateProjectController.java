@@ -33,7 +33,7 @@ public class CreateProjectController {
 
     @FXML
 	public void initialize() {
-		conn = new SQLConnector().getConnection();
+		conn = SQLConnector.getInstance().getConnection();
 		dateField.setValue(LocalDate.now());
 	}
 
