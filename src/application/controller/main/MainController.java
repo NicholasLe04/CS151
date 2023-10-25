@@ -8,11 +8,13 @@ import application.controller.project.ProjectController;
 import db.SQLConnector;
 import entries.Project;
 import entries.ProjectDAO;
-import javafx.fxml.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
-import javafx.stage.*;
+import javafx.stage.Stage;
 
 public class MainController {
 	

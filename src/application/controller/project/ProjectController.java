@@ -2,16 +2,13 @@ package application.controller.project;
 
 import java.sql.Connection;
 import java.time.LocalDate;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.*;
 
 import application.controller.main.MainController;
 import db.SQLConnector;
 import entries.Project;
 import entries.ProjectDAO;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
 
 public class ProjectController {
 	
@@ -26,6 +23,10 @@ public class ProjectController {
 		conn = new SQLConnector().getConnection();
 	}
 
+	/**
+	 * 
+	 * @param String name
+	 */
     public void setName(String name) {
         this.title.setText(name);
     }

@@ -1,18 +1,18 @@
 package application.controller.main;
 
-import javafx.fxml.FXML;
-import application.controller.main.MainController;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
-
 import java.sql.Connection;
 import java.time.LocalDate;
 
 import db.SQLConnector;
 import entries.Project;
 import entries.ProjectDAO;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 
 public class CreateProjectController {
@@ -63,7 +63,7 @@ public class CreateProjectController {
 			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 			MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
 			
-			mainController.updateProjects();											// reload main window
+			mainController.updateProjects();										// reload main window
 			mainController.setCreateButtonState(true);								// enable newProjectButton
 			
 			stage.close();															// close window

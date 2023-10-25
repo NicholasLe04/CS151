@@ -63,7 +63,7 @@ public class ProjectDAO {
 	}
 
 	/**
-	 * Persist a Project.
+	 * Edit a Project.
 	 * @param Project project
 	 * @param String newName
 	 * @param LocalDate newDate
