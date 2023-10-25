@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 public class MainController {
 	
 	private Connection conn;
+	private ProjectDAO projectDAO;
 	
 	@FXML public Button newProjectButton;
 	@FXML public GridPane projectGrid;
@@ -26,6 +27,7 @@ public class MainController {
 	@FXML
 	public void initialize() {
 		conn = new SQLConnector().getConnection();
+		projectDAO = new ProjectDAO(conn);
 		updateProjects();
 	}
 	
@@ -50,7 +52,6 @@ public class MainController {
 	}
 
 	public void updateProjects() {
-		ProjectDAO projectDAO = new ProjectDAO(conn);
 		ArrayList<Project> projects = projectDAO.getProjects();
 		
 		try {
@@ -61,7 +62,7 @@ public class MainController {
 				Parent projectNode = projectLoader.load();
 				// modify the projectNode
 				ProjectController controller = (ProjectController) projectNode.getUserData();
-				controller.setName(projects.get(i).getName());
+				controller.setTitle(projects.get(i).getName());
 				controller.setDate(projects.get(i).getDate());
 				controller.setDesc(projects.get(i).getDesc());
 				// this passes the MainController to the projectCard
