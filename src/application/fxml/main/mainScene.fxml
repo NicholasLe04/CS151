@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane styleClass="mainRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.main.MainController" stylesheets="@mainScene.css">	
+	<top>
+		<HBox styleClass="mainHeader">
+			<Label styleClass="mainTitleLabel">Projects</Label>
+		</HBox>
+	</top>
+	<center>
+		<GridPane fx:id="projectGrid" styleClass="mainProjectGrid" hgap="10" vgap="10">
+		</GridPane>
+	</center>
+	<bottom>
+		<VBox styleClass="mainButtonBox" alignment="BOTTOM_RIGHT">
+			<Button fx:id="newProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
+		</VBox>
+	</bottom>
+</BorderPane>
