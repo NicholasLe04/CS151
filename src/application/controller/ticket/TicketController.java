@@ -1,5 +1,4 @@
 package application.controller.ticket;
-
 import java.sql.Connection;
 
 import db.SQLConnector;

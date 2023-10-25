@@ -23,6 +23,5 @@
         <Label fx:id="desc" styleClass="projectDesc">asdfa</Label> 
     </VBox>
     <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER">
-    
     </VBox>
 </VBox>
