@@ -16,13 +16,12 @@
         <HBox>
             <Label fx:id="title" styleClass="projectTitle">Project Title 1</Label>
             <HBox HBox.hgrow="ALWAYS" />
-            <Button>edit</Button>
+            <Button onAction="#showEditProjectDialog">edit</Button>
             <Button onAction="#deleteProject">stomp</Button>
         </HBox>
         <Label fx:id="date" styleClass="projectDate">Started on</Label>
         <Label fx:id="desc" styleClass="projectDesc">asdfa</Label> 
     </VBox>
-    <VBox alignment="CENTER" style="-fx-padding: 10">
-        <Label style="-fx-text-fill: white">tickets here TODO</Label> <!-- TODO -->
+    <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER">
     </VBox>
 </VBox>
