@@ -21,8 +21,8 @@ public class MainController {
 	private Connection conn;
 	private ProjectDAO projectDAO;
 	
-	@FXML public Button newProjectButton;
-	@FXML public GridPane projectGrid;
+	@FXML private Button createProjectButton;
+	@FXML private GridPane projectGrid;
 	
 	@FXML
 	public void initialize() {
@@ -35,7 +35,7 @@ public class MainController {
 		try {
 			// load fxml
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/application/fxml/main/newProjectDialog.fxml"));
+			loader.setLocation(getClass().getResource("/application/fxml/main/createProjectDialog.fxml"));
 			Parent root = loader.load();
 			// open new window
 			Stage stage = new Stage();
@@ -43,9 +43,10 @@ public class MainController {
 			stage.setScene(scene);
 			// pass this Controller instance, so dialog can change things in the main window
 			stage.setUserData(this);
+			stage.setOnCloseRequest(e -> setButtonState(true));
 			stage.show();			
 			// disable button
-			newProjectButton.setDisable(true);
+			setButtonState(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,6 +66,8 @@ public class MainController {
 				controller.setTitle(projects.get(i).getTitle());
 				controller.setDate(projects.get(i).getDate());
 				controller.setDesc(projects.get(i).getDesc());
+				// get tickets too
+				controller.updateTickets();
 				// this passes the MainController to the projectCard
 				projectNode.setUserData(this);
 				// add project
@@ -74,5 +77,8 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void setButtonState(boolean state) {
+		createProjectButton.setDisable(!state);
+	}
 }

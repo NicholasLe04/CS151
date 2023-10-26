@@ -15,8 +15,8 @@
 	</userData>
 	<HBox styleClass="ticketHeader">
 		<Label fx:id="title" styleClass="ticketTitle">ticket title</Label>
-		<Button>edit</Button>
 		<Button>comment</Button>
+		<Button>edit</Button>
 		<Button>stomp</Button>
 	</HBox>
 	<Label fx:id="desc">desc</Label>

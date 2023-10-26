@@ -25,6 +25,7 @@ public class TicketController {
 		conn = SQLConnector.getInstance().getConnection();
 		ticketDAO = new TicketDAO(conn);
 		commentDAO = new CommentDAO(conn);
+		
 	}
 	
 	public int getId() {
@@ -42,4 +43,8 @@ public class TicketController {
 	public void setDesc(String desc) {
     	this.desc.setText(desc);
     }
+	
+	public void updateComments() {
+		System.out.println("comments updated");
+	}
 }

@@ -20,7 +20,7 @@
 	</center>
 	<bottom>
 		<VBox styleClass="mainButtonBox" alignment="BOTTOM_RIGHT">
-			<Button fx:id="newProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
+			<Button fx:id="createProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
 		</VBox>
 	</bottom>
 </BorderPane>

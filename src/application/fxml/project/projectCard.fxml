@@ -16,8 +16,9 @@
         <HBox>
             <Label fx:id="title" styleClass="projectTitle">Project Title 1</Label>
             <HBox HBox.hgrow="ALWAYS" />
-            <Button onAction="#showEditProjectDialog">edit</Button>
-            <Button onAction="#deleteProject">stomp</Button>
+            <Button fx:id="createTicketButton" onAction="#showCreateTicketDialog">ticket</Button>
+            <Button fx:id="editProjectButton" onAction="#showEditProjectDialog">edit</Button>
+            <Button fx:id="deleteProjectButton" onAction="#deleteProject">stomp</Button>
         </HBox>
         <Label fx:id="date" styleClass="projectDate">Started on</Label>
         <Label fx:id="desc" styleClass="projectDesc">asdfa</Label> 

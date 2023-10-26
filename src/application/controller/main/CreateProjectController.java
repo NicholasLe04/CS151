@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.time.LocalDate;
 
 import db.SQLConnector;
-import entries.Project;
 import entries.ProjectDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,7 +39,8 @@ public class CreateProjectController {
     public void closeDialog() {
 		Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 		MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
-		mainController.newProjectButton.setDisable(false);						// enable newProjectButton
+		mainController.updateProjects();							// update projectGrid
+		mainController.setButtonState(true);						// enable newProjectButton
 		stage.close();															// close window
 	}
 
@@ -60,13 +60,7 @@ public class CreateProjectController {
 			ProjectDAO projectDAO = new ProjectDAO(conn);							// add project
 			projectDAO.createProject(title, date, desc);
 			
-			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
-			MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
-			
-			mainController.updateProjects();										// reload main window
-			mainController.newProjectButton.setDisable(false);						// enable newProjectButton
-			
-			stage.close();															// close window
+			closeDialog();															// close window
 		}
     }
 }
