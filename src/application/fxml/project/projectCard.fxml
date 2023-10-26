@@ -21,7 +21,7 @@
             <Button fx:id="deleteProjectButton" onAction="#deleteProject">stomp</Button>
         </HBox>
         <Label fx:id="date" styleClass="projectDate" />
-        <Label fx:id="desc" styleClass="projectDesc" />
+        <Label fx:id="desc" styleClass="projectDesc" wrapText="true" />
     </VBox>
     <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER" spacing="20" />
 </VBox>

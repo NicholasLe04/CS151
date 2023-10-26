@@ -30,7 +30,7 @@ public class Main extends Application {
 		projectDAO.createProject("kanji-classifier", LocalDate.now(), "OCR webapp that classifies 3000+ Japanese Kanji. https://github.com/al3xbro/kanji-classifier");
 		projectDAO.createProject("blockfish", LocalDate.now(), "stockfish but bad. https://github.com/NicholasLe04/blockfish");
 		projectDAO.createProject("odin-recipies", LocalDate.now(), "basic HTML website from the odin project! https://github.com/initialkermit/odin-recipes");
-		ticketDAO.createTicket("its too ugly", "the website doesnt have any css its too ugly. pssst... identical tickets and comments may be added everytime the app is started. this has to do with how we're prepopulating our projects, and is not a bug present during normal app use.", "odin-recipies");
+		ticketDAO.createTicket("its too ugly", "the website doesnt have any css its too ugly. pssst... identical tickets and comments may be added everytime the app is started. this has to do with how were prepopulating our projects, and is not a bug present during normal app use.", "odin-recipies");
 		ticketDAO.createTicket("model is too slow", "the CNN takes forever to classify things under load. pssst... try adding/deleting your own projects, tickets, and comments. everything is fully functional, except for editing!", "kanji-classifier");
 		commentDAO.createComment("try hosting the model on AWS", 2);
 		commentDAO.createComment("need to compress model as well", 2);

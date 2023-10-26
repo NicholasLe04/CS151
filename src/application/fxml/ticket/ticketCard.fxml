@@ -20,6 +20,6 @@
 		<Button fx:id="editTicketButton" onAction="#showEditTicketDialog">edit</Button>
 		<Button fx:id="deleteTicketButton" onAction="#deleteTicket">stomp</Button>
 	</HBox>
-	<Label fx:id="desc" styleClass="ticketDesc" />
+	<Label fx:id="desc" styleClass="ticketDesc" wrapText="true" />
 	<VBox fx:id="commentList" styleClass="commentList" alignment="CENTER" spacing="10" />
 </VBox>
