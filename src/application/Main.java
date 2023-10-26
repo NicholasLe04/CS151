@@ -33,6 +33,8 @@ public class Main extends Application {
 		ticketDAO.createTicket("its too ugly", "the website doesnt have any css its too ugly", "odin-recipies");
 		ticketDAO.createTicket("model is too slow", "the CNN takes forever to classify things under load", "kanji-classifier");
 		commentDAO.createComment("try hosting the model on AWS", 2);
+		commentDAO.createComment("need to compress model as well", 2);
+		ticketDAO.createTicket("security concerns with endpoint", "i fear my home network may be hacked", "kanji-classifier");
 		
 		try {
 			// load fxml
