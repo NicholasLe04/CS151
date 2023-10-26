@@ -3,6 +3,7 @@ package application.controller.comment;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 
+import application.controller.ticket.TicketController;
 import db.SQLConnector;
 import entries.CommentDAO;
 import javafx.fxml.FXML;
@@ -39,7 +40,14 @@ public class CommentController {
 		this.timestamp.setText(timestamp.toLocalDate() + " " + timestamp.toLocalTime());
 	}
 	
-	
+	public void deleteComment() {
+		// add confirm dialog
+		commentDAO.deleteComment(id);
+		// update commentList
+		// ticket controller to update commentList
+		TicketController controller = (TicketController) body.getParent().getParent().getParent().getUserData();
+		controller.updateComments();
+	}
 	
 	public void showEditCommentBox() {
 		System.out.println("edit comment");

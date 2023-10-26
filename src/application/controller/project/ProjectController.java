@@ -63,8 +63,8 @@ public class ProjectController {
     	projectDAO.deleteProject(title.getText());
     	// update projectGrid
     	// gets the MainController instance (passed when the projectCard was created). this is ass but idk how to pass props in jfx
-    	MainController mainController = (MainController) title.getParent().getParent().getParent().getUserData();
-    	mainController.updateProjects();
+    	MainController controller = (MainController) ticketList.getParent().getParent().getParent().getUserData();
+    	controller.updateProjects();
         
     }
 
@@ -82,9 +82,8 @@ public class ProjectController {
 			Stage stage = new Stage();
 			Scene scene = new Scene(root, 800, 500);
 			stage.setScene(scene);
-			// pass this Controller instance, so dialog can change things in the project
-			stage.setUserData(this);
 			stage.setOnCloseRequest(e -> setButtonState(true));
+			stage.setUserData(this);
 			stage.show();			
 			// disable button
 			setButtonState(false);
@@ -109,8 +108,6 @@ public class ProjectController {
 	    		controller.setDesc(ticket.getDesc());
 	    		// get comments too 
 	    		controller.updateComments();
-	    		// this passes the ProjectController to the ticketList
-	    		ticketNode.setUserData(this);
 	    		// add ticket
 	    		ticketList.getChildren().add(ticketNode);
 	    	}

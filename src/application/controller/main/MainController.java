@@ -41,9 +41,8 @@ public class MainController {
 			Stage stage = new Stage();
 			Scene scene = new Scene(root, 800, 500);
 			stage.setScene(scene);
-			// pass this Controller instance, so dialog can change things in the main window
-			stage.setUserData(this);
 			stage.setOnCloseRequest(e -> setButtonState(true));
+			stage.setUserData(this);
 			stage.show();			
 			// disable button
 			setButtonState(false);
@@ -68,8 +67,6 @@ public class MainController {
 				controller.setDesc(projects.get(i).getDesc());
 				// get tickets too
 				controller.updateTickets();
-				// this passes the MainController to the projectCard
-				projectNode.setUserData(this);
 				// add project
 				projectGrid.add(projectNode, i % 4, i / 4);
 			}

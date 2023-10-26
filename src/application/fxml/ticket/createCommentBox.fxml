@@ -11,10 +11,15 @@
 <?import javafx.scene.control.TextArea?>
 
 <VBox styleClass="createCommentRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ticket.CreateCommentController" stylesheets="@createCommentBox.css">
-    <Label fx:id="bodyError"></Label>
-    <TextArea fx:id="bodyField" />
+    <VBox>
+    	<HBox>
+    		<HBox HBox.hgrow="ALWAYS" />
+    		<Label fx:id="bodyError" styleClass="errorMessage"></Label>
+    	</HBox>
+    </VBox>
+    <TextArea fx:id="bodyField" styleClass="commentBodyField" />
     <HBox fx:id="buttonBox" styleClass="buttonBox" alignment="BOTTOM_RIGHT">
-    	<Button fx:id="cancelButton" styleClass="commentCancelButton" onAction="#closeBox">Cancel</Button>
-    	<Button fx:id="createButton" styleClass="commentCreateButton" onAction="#createComment">Create</Button>
+    	<Button fx:id="cancelButton" styleClass="commentCancelButton" onAction="#closeBox">cancel</Button>
+    	<Button fx:id="createButton" styleClass="commentCreateButton" onAction="#createComment">create</Button>
     </HBox>
 </VBox>

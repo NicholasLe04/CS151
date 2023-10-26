@@ -18,7 +18,7 @@
 		<HBox HBox.hgrow="ALWAYS" />
 		<Button fx:id="createCommentButton" onAction="#showCreateCommentBox">comment</Button>
 		<Button fx:id="editTicketButton">edit</Button>
-		<Button fx:id="deleteTicketButton">stomp</Button>
+		<Button fx:id="deleteTicketButton" onAction="#deleteTicket">stomp</Button>
 	</HBox>
 	<Label fx:id="desc" styleClass="ticketDesc" />
 	<VBox fx:id="commentList" styleClass="commentList" alignment="CENTER" spacing="10" />

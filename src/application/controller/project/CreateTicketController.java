@@ -50,7 +50,6 @@ public class CreateTicketController {
 		
 			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 			ProjectController projectController = (ProjectController) stage.getUserData();	// get instance of MainController
-						
 			ticketDAO.createTicket(title, desc, projectController.getTitle());		// add project
 			
 			closeDialog();	

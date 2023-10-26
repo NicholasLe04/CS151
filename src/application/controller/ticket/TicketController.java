@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import application.controller.comment.CommentController;
+import application.controller.project.ProjectController;
 import db.SQLConnector;
 import entries.Comment;
 import entries.CommentDAO;
+import entries.TicketDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +20,7 @@ public class TicketController {
 	
 	private Connection conn;
 	private CommentDAO commentDAO;
+	private TicketDAO ticketDAO;
 	
 	private int id;
 	@FXML private Label title;
@@ -33,6 +36,7 @@ public class TicketController {
 	public void initialize() {
 		conn = SQLConnector.getInstance().getConnection();
 		commentDAO = new CommentDAO(conn);
+		ticketDAO = new TicketDAO(conn);
 		updateComments();
 	}
 	
@@ -58,10 +62,10 @@ public class TicketController {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("/application/fxml/ticket/createCommentBox.fxml"));
 			Parent root = loader.load();
-			// pass this Controller instance, so dialog can change things in the ticket
-			root.setUserData(this);
 			ticketRoot.getChildren().add(root);
-			
+			setButtonState(false);
+			ProjectController projectController = (ProjectController) ticketRoot.getParent().getParent().getUserData();
+			projectController.setButtonState(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -69,6 +73,14 @@ public class TicketController {
 	
 	public VBox getTicketRoot() {
 		return ticketRoot; 
+	}
+	
+	public void deleteTicket() {
+		// add confirm dialog
+		ticketDAO.deleteTicket(id);
+		// update commentList
+		ProjectController controller = (ProjectController) commentList.getParent().getParent().getParent().getUserData();
+		controller.updateTickets();
 	}
 
 	public void showEditTicketBox() {
@@ -89,7 +101,7 @@ public class TicketController {
 				controller.setId(comment.getId());
 				controller.setBody(comment.getBody());
 				controller.setTimestamp(comment.getTimestamp());
-				// add comment
+			// add comment
 				commentList.getChildren().add(commentNode);
 			}
 		} catch (Exception e) {

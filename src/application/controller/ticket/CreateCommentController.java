@@ -2,6 +2,7 @@ package application.controller.ticket;
 
 import java.sql.Connection;
 
+import application.controller.project.ProjectController;
 import db.SQLConnector;
 import entries.CommentDAO;
 import javafx.fxml.FXML;
@@ -27,8 +28,10 @@ public class CreateCommentController {
     }
 
     public void closeBox() {
-        TicketController ticketController = (TicketController) cancelButton.getParent().getParent().getUserData();
+    	TicketController ticketController = (TicketController) cancelButton.getParent().getParent().getParent().getUserData();
+    	ProjectController projectController = (ProjectController) ticketController.getTicketRoot().getParent().getParent().getUserData();
         ticketController.updateComments();
+        projectController.setButtonState(true);
         ticketController.setButtonState(true);
         ticketController.getTicketRoot().getChildren().remove(cancelButton.getParent().getParent());
     }
@@ -36,13 +39,12 @@ public class CreateCommentController {
     public void createComment() {
     	// get fields
     	String body = bodyField.getText();
-    	//validation
-    	if (body.isEmpty()) bodyError.setText("Body is required.");
+    	// validation
+    	if (body.isEmpty()) bodyError.setText("Comment Body is required.");
     	// if everything is good, add the project
     	else {
     		bodyError.setText("");
-	    	
-	    	TicketController ticketController = (TicketController) createButton.getParent().getParent().getUserData();
+	    	TicketController ticketController = (TicketController) createButton.getParent().getParent().getParent().getUserData();
 	    	commentDAO.createComment(body, ticketController.getId());
 	    	
 	        closeBox();
