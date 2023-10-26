@@ -14,7 +14,7 @@ public class Project {
 	 * @param LocalDate date
 	 * @param String desc
 	 */
-	public Project(String title, LocalDate date, String desc) {
+	protected Project(String title, LocalDate date, String desc) {
 		this.title = title;
 		this.date = date;
 		this.desc = desc;

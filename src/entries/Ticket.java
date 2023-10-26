@@ -3,7 +3,7 @@ package entries;
 public class Ticket {	
 	
 	private int id;
-	private String name;
+	private String title;
 	private String desc;
 	
 	/**
@@ -13,20 +13,9 @@ public class Ticket {
 	 * @param String desc
 	 * @param Project parentProject
 	 */
-	protected Ticket(int id, String name, String desc) {
+	protected Ticket(int id, String title, String desc) {
 		this.id = id;
-		this.name = name;
-		this.desc = desc;
-	}
-	
-	/**
-	 * Create Ticket not in db. Must call createTicket(this) before using.
-	 * @param name
-	 * @param desc
-	 * @param Project parentProject
-	 */
-	public Ticket(String name, String desc) {
-		this.name = name;
+		this.title = title;
 		this.desc = desc;
 	}
 
@@ -38,12 +27,12 @@ public class Ticket {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String name) {
+		this.title = name;
 	}
 
 	public String getDesc() {

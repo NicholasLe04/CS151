@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import application.controller.main.MainController;
 import application.controller.ticket.TicketController;
 import db.SQLConnector;
-import entries.Project;
 import entries.ProjectDAO;
 import entries.Ticket;
 import entries.TicketDAO;
@@ -23,22 +22,23 @@ public class ProjectController {
 	private ProjectDAO projectDAO;
 	private TicketDAO ticketDAO;
 
-	@FXML public Label title;
-	@FXML public Label date;
-	@FXML public Label desc;
-	@FXML public VBox ticketList;
+	@FXML private Label title;
+	@FXML private Label date;
+	@FXML private Label desc;
+	@FXML private VBox ticketList;
 	
 	@FXML
 	public void initialize() {
 		conn = SQLConnector.getInstance().getConnection();
 		projectDAO = new ProjectDAO(conn);
 		ticketDAO = new TicketDAO(conn);
+		updateTickets();
 	}
 
-	/**
-	 * 
-	 * @param String name
-	 */
+	public String getTitle() {
+		return title.getText();
+	}
+	
     public void setTitle(String title) {
         this.title.setText(title);
     }
@@ -76,6 +76,9 @@ public class ProjectController {
 	    		Parent ticketNode = ticketLoader.load();
 	    		// modify the ticketNode
 	    		TicketController controller = (TicketController) ticketNode.getUserData();
+	    		controller.setId(tickets.get(i).getId());
+	    		controller.setTitle(tickets.get(i).getTitle());
+	    		controller.setDesc(tickets.get(i).getDesc());
 	    		// this passes the ProjectController to the ticketList
 	    		ticketNode.setUserData(this);
 	    		// add ticket

@@ -20,15 +20,6 @@ public class Comment {
 		this.body = body;
 		this.timestamp = timestamp;
 	}
-	
-	/**
-	 * Create Comment not in db. Must call createComment(this) before using.
-	 * @param body
-	 * @param ticket
-	 */
-	public Comment(String body) {
-		this.body = body;
-	}
 
 	public int getId() {
 		return id;
