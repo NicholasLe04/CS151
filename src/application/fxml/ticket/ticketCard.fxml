@@ -15,12 +15,11 @@
 	</userData>
 	<HBox styleClass="ticketHeader">
 		<Label fx:id="title" styleClass="ticketTitle">ticket title</Label>
-		<Button>comment</Button>
-		<Button>edit</Button>
-		<Button>stomp</Button>
+		<HBox HBox.hgrow="ALWAYS" />
+		<Button fx:id="createCommentButton">comment</Button>
+		<Button fx:id="editCommentButton">edit</Button>
+		<Button fx:id="deleteCommentButton">stomp</Button>
 	</HBox>
-	<Label fx:id="desc">desc</Label>
-	<VBox>
-		<Label>comments here</Label>
-	</VBox>
+	<Label fx:id="desc" styleClass="ticketDesc" />
+	<VBox fx:id="commentList" styleClass="commentList" alignment="CENTER" />
 </VBox>

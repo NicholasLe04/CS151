@@ -15,15 +15,15 @@
 }
 
 .projectDate {
-	-fx-font-size: 16px;
 	-fx-text-fill: #ffffff;
+	-fx-font-size: 16px;
 }
 
 .projectDesc {
-	-fx-font-size: 16px;
 	-fx-text-fill: #ffffff;
+	-fx-font-size: 16px;
 }
 
 .ticketList {
-	-fx-padding: 10px;
+	-fx-padding: 20px;
 }

@@ -20,9 +20,8 @@
             <Button fx:id="editProjectButton" onAction="#showEditProjectDialog">edit</Button>
             <Button fx:id="deleteProjectButton" onAction="#deleteProject">stomp</Button>
         </HBox>
-        <Label fx:id="date" styleClass="projectDate">Started on</Label>
-        <Label fx:id="desc" styleClass="projectDesc">asdfa</Label> 
+        <Label fx:id="date" styleClass="projectDate" />
+        <Label fx:id="desc" styleClass="projectDesc" />
     </VBox>
-    <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER">
-    </VBox>
+    <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER" />
 </VBox>
