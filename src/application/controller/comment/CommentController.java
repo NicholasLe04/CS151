@@ -27,7 +27,7 @@ public class CommentController {
 		conn = SQLConnector.getInstance().getConnection();
 		commentDAO = new CommentDAO(conn);
 	}
-	
+		
 	public void setId(int id) {
 		this.id = id;
 	}

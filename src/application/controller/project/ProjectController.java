@@ -93,6 +93,7 @@ public class ProjectController {
     	}
     }
     
+    // this reloads the project grid, like in react!
     public void updateTickets() {
     	ArrayList<Ticket> tickets = ticketDAO.getTickets(title.getText());
     	

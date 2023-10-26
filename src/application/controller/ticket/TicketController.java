@@ -88,6 +88,7 @@ public class TicketController {
 		System.out.println("edit " + id);
 	}
 	
+	// this reloads the comment list, like in react!
 	public void updateComments() {
 		ArrayList<Comment> comments = commentDAO.getComments(id);
 		
