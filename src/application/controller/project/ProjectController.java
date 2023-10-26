@@ -53,7 +53,7 @@ public class ProjectController {
     
     public void deleteProject() {
     	// add confirmation dialog
-    	projectDAO.deleteProject(new Project(title.getText(), LocalDate.parse(date.getText().substring(11)), desc.getText()));
+    	projectDAO.deleteProject(title.getText());
     	// update projectGrid
     	// gets the MainController instance (passed when the projectCard was created). this is ass but idk how to pass props in jfx
     	MainController mainController = (MainController) title.getParent().getParent().getParent().getUserData();
@@ -67,7 +67,7 @@ public class ProjectController {
     }
     
     public void updateTickets() {
-    	ArrayList<Ticket> tickets = ticketDAO.getTickets(new Project(title.getText(), LocalDate.parse(date.getText().substring(11)), desc.getText()));
+    	ArrayList<Ticket> tickets = ticketDAO.getTickets(title.getText());
     	
     	try {
 	    	for (int i = 0; i < tickets.size(); i++) {

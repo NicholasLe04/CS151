@@ -40,7 +40,7 @@ public class CreateProjectController {
     public void closeDialog() {
 		Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 		MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
-		mainController.setCreateButtonState(true);								// enable newProjectButton
+		mainController.newProjectButton.setDisable(false);						// enable newProjectButton
 		stage.close();															// close window
 	}
 
@@ -58,13 +58,13 @@ public class CreateProjectController {
 		if (!title.isEmpty() && date != null) {
 			
 			ProjectDAO projectDAO = new ProjectDAO(conn);							// add project
-			projectDAO.createProject(new Project(title, date, desc));
+			projectDAO.createProject(title, date, desc);
 			
 			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 			MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
 			
 			mainController.updateProjects();										// reload main window
-			mainController.setCreateButtonState(true);								// enable newProjectButton
+			mainController.newProjectButton.setDisable(false);						// enable newProjectButton
 			
 			stage.close();															// close window
 		}

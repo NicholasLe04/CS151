@@ -34,10 +34,10 @@ public class ProjectDAO {
 			);
 			// places everything in ArrayList projects
 			while (res.next()) {
-				String projectName = res.getString(1);
+				String projectTitle = res.getString(1);
 				String projectStartDate = res.getString(2);
 				String projectDesc = res.getString(3);
-				toReturn.add(new Project(projectName, LocalDate.parse(projectStartDate), projectDesc));
+				toReturn.add(new Project(projectTitle, LocalDate.parse(projectStartDate), projectDesc));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -49,13 +49,13 @@ public class ProjectDAO {
 	 * Persist a Project.
 	 * @param Project toPersist
 	 */
-	public void createProject(Project project) {
+	public void createProject(String projectTitle, LocalDate projectDate, String projectDesc) {
 		// add project to db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"INSERT INTO project " +
-				"VALUES('" + project.getName() + "', '" + project.getDate().toString() + "', '" + project.getDesc() + "')"
+				"VALUES('" + projectTitle + "', '" + projectDate.toString() + "', '" + projectDesc + "')"
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -69,36 +69,32 @@ public class ProjectDAO {
 	 * @param LocalDate newDate
 	 * @param String newDesc
 	 */
-	public void edit(Project project, String newName, LocalDate newDate, String newDesc) {
+	public void edit(String oldName, String newName, LocalDate newDate, String newDesc) {
 		// update ticket in db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"UPDATE project " +
-				"SET project_name='" + newName + "', start_date='" + newDate + "', desc='" + newDesc + "' " +
-				"WHERE project_name='" + project.getName() + "'"
+				"SET project_title='" + newName + "', start_date='" + newDate + "', desc='" + newDesc + "' " +
+				"WHERE project_title='" + oldName + "'"
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		// update Ticket object
-		project.setName(newName);
-		project.setDate(newDate);
-		project.setDesc(newDesc);
 	}
 
 	/**
 	 * Delete a Project.
 	 * @param project
 	 */
-	public void deleteProject(Project project) {
+	public void deleteProject(String projectTitle) {
 		// remove project from db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"DELETE " +
 				"FROM project " +
-				"WHERE project_name='" + project.getName() + "'"
+				"WHERE project_title='" + projectTitle + "'"
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -49,7 +49,7 @@ public class SQLConnector {
 			statement.execute("PRAGMA foreign_keys = ON");
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS project(" + 
-					"project_name TEXT UNIQUE NOT NULL PRIMARY KEY, " +
+					"project_title TEXT UNIQUE NOT NULL PRIMARY KEY, " +
 					"start_date TEXT NOT NULL, " +
 					"desc TEXT" +
 				")"
@@ -57,10 +57,10 @@ public class SQLConnector {
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS ticket(" +
 					"ticket_id INT AUTO_INCREMENT UNIQUE NOT NULL PRIMARY KEY, " +
-					"ticket_name TEXT NOT NULL, " +
+					"ticket_title TEXT NOT NULL, " +
 					"desc TEXT, " +
-					"project_name TEXT NOT NULL, " +
-					"FOREIGN KEY(project_name) REFERENCES project(project_name) ON DELETE CASCADE" +
+					"project_title TEXT NOT NULL, " +
+					"FOREIGN KEY(project_title) REFERENCES project(project_title) ON DELETE CASCADE" +
 				")"
 			);
 			statement.execute(

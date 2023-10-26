@@ -7,7 +7,6 @@ public class Comment {
 	private int id;
 	private String body;
 	private LocalDateTime timestamp;
-	private Ticket ticket;
 
 	/**
 	 * Create Comment already in db.
@@ -16,11 +15,10 @@ public class Comment {
 	 * @param Local DateTime timestamp
 	 * @param Ticket parentTicket
 	 */
-	protected Comment(int id, String body, LocalDateTime timestamp, Ticket ticket) {
+	protected Comment(int id, String body, LocalDateTime timestamp) {
 		this.id = id;
 		this.body = body;
 		this.timestamp = timestamp;
-		this.ticket = ticket;
 	}
 	
 	/**
@@ -28,9 +26,8 @@ public class Comment {
 	 * @param body
 	 * @param ticket
 	 */
-	public Comment(String body, Ticket ticket) {
+	public Comment(String body) {
 		this.body = body;
-		this.ticket = ticket;
 	}
 
 	public int getId() {
@@ -55,13 +52,5 @@ public class Comment {
 	
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
-	}
-	
-	/**
-	 * Get parent Ticket.
-	 * @return Ticket parentTicket
-	 */
-	public Ticket getTicket() {
-		return ticket;
 	}
 }

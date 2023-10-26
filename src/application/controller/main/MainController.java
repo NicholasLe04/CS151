@@ -62,7 +62,7 @@ public class MainController {
 				Parent projectNode = projectLoader.load();
 				// modify the projectNode
 				ProjectController controller = (ProjectController) projectNode.getUserData();
-				controller.setTitle(projects.get(i).getName());
+				controller.setTitle(projects.get(i).getTitle());
 				controller.setDate(projects.get(i).getDate());
 				controller.setDesc(projects.get(i).getDesc());
 				// this passes the MainController to the projectCard
@@ -74,8 +74,5 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
-	
-	public void setCreateButtonState(boolean state) {
-		newProjectButton.setDisable(!state);
-	}
+
 }

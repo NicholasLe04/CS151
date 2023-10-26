@@ -18,7 +18,7 @@ public class TicketDAO {
 		this.conn = conn;
 	}
 
-	public ArrayList<Ticket> getTickets(Project project) {
+	public ArrayList<Ticket> getTickets(String projectTitle) {
 		ArrayList<Ticket> tickets = new ArrayList<>();
 		try {
 			// queries for all tickets
@@ -26,14 +26,14 @@ public class TicketDAO {
 			ResultSet res = statement.executeQuery(
 				"SELECT * " +
 				"FROM ticket " + 
-				"WHERE project_name='" + project.getName() + "'"
+				"WHERE project_title='" + projectTitle + "'"
 			);
 			// places everything in ArrayList tickets
 			while (res.next()) {
 				int ticketId = res.getInt(1);
-				String ticketName = res.getString(2);
+				String ticketTitle = res.getString(2);
 				String ticketDesc = res.getString(3);
-				tickets.add(new Ticket(ticketId, ticketName, ticketDesc, project));
+				tickets.add(new Ticket(ticketId, ticketTitle, ticketDesc));
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -45,15 +45,13 @@ public class TicketDAO {
 	 * Persist a Ticket.
 	 * @param Ticket toPersist
 	 */
-	public void createTicket(Ticket ticket) {
+	public void createTicket(String ticketTitle, String ticketDesc, String projectTitle) {
+		// add ticket to db
 		try {
 			Statement statement = conn.createStatement();
-			// update Ticket object id property
-			ticket.setId(statement.executeQuery("SELECT last_insert_rowid() FROM ticket").getInt(1));
-			// add ticket to db
 			statement.executeUpdate(
-				"INSERT INTO ticket(ticket_name, desc, project_name) " +
-				"VALUES('" + ticket.getName() + "', '" + ticket.getDesc() + "', '" + ticket.getProject().getName() + "')"
+				"INSERT INTO ticket(ticket_title, desc, project_title) " +
+				"VALUES('" + ticketTitle + "', '" + ticketDesc + "', '" + projectTitle + "')"
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,34 +64,31 @@ public class TicketDAO {
 	 * @param newName
 	 * @param newDesc
 	 */
-	public void edit(Ticket ticket, String newName, String newDesc) {
+	public void edit(int ticketId, String newName, String newDesc) {
 		// update ticket in db
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"UPDATE ticket " +
-				"SET ticket_name='" + newName + "', desc='" + newDesc + "' " +
-				"WHERE ticket_id='" + ticket.getId() + "'"
+				"SET ticket_title='" + newName + "', desc='" + newDesc + "' " +
+				"WHERE ticket_id='" + ticketId + "'"
 			);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		// update Ticket object
-		ticket.setName(newName);
-		ticket.setDesc(newDesc);
 	}
 
 	/**
 	 * Delete a ticket.
 	 * @param Ticket toDelete
 	 */
-	public void deleteTicket(Ticket ticket) {
+	public void deleteTicket(int ticketId) {
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
 				"DELETE " +
 				"FROM ticket " +
-				"WHERE ticket_id='" + ticket.getId() + "'"
+				"WHERE ticket_id='" + ticketId + "'"
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();

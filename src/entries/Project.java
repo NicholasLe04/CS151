@@ -4,28 +4,28 @@ import java.time.LocalDate;
 
 public class Project {
 	
-	private String name;
+	private String title;
 	private LocalDate date;
 	private String desc;
 
 	/**
 	 * Create project.
-	 * @param String name
+	 * @param String title
 	 * @param LocalDate date
 	 * @param String desc
 	 */
-	public Project(String name, LocalDate date, String desc) {
-		this.name = name;
+	public Project(String title, LocalDate date, String desc) {
+		this.title = title;
 		this.date = date;
 		this.desc = desc;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public LocalDate getDate() {
