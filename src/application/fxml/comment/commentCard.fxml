@@ -15,7 +15,7 @@
 	</userData>
 	<HBox>
 		<HBox HBox.hgrow="ALWAYS" />
-		<Button fx:id="editCommentButton">edit</Button>
+		<Button fx:id="editCommentButton" onAction="#showEditCommentBox">edit</Button>
 		<Button fx:id="deleteCommentButton" onAction="#deleteComment">stomp</Button>
 	</HBox>
 	<Label fx:id="body" styleClass="commentBody">body</Label>

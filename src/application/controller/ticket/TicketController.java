@@ -83,8 +83,8 @@ public class TicketController {
 		controller.updateTickets();
 	}
 
-	public void showEditTicketBox() {
-		System.out.println("edit ticket");
+	public void showEditTicketDialog() {
+		System.out.println("edit " + id);
 	}
 	
 	public void updateComments() {

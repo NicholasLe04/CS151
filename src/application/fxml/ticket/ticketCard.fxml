@@ -17,7 +17,7 @@
 		<Label fx:id="title" styleClass="ticketTitle">ticket title</Label>
 		<HBox HBox.hgrow="ALWAYS" />
 		<Button fx:id="createCommentButton" onAction="#showCreateCommentBox">comment</Button>
-		<Button fx:id="editTicketButton">edit</Button>
+		<Button fx:id="editTicketButton" onAction="#showEditTicketDialog">edit</Button>
 		<Button fx:id="deleteTicketButton" onAction="#deleteTicket">stomp</Button>
 	</HBox>
 	<Label fx:id="desc" styleClass="ticketDesc" />

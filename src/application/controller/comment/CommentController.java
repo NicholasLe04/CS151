@@ -50,7 +50,7 @@ public class CommentController {
 	}
 	
 	public void showEditCommentBox() {
-		System.out.println("edit comment");
+		System.out.println("edit " + id);
 	}
 	
 	public void setButtonState(boolean state) {
