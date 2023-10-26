@@ -23,5 +23,5 @@
         <Label fx:id="date" styleClass="projectDate" />
         <Label fx:id="desc" styleClass="projectDesc" />
     </VBox>
-    <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER" />
+    <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER" spacing="20" />
 </VBox>

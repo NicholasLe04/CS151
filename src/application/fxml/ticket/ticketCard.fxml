@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
 
-<VBox styleClass="ticketRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ticket.TicketController" stylesheets="@ticketCard.css">
+<VBox fx:id="ticketRoot" styleClass="ticketRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ticket.TicketController" stylesheets="@ticketCard.css">
 	<userData>
 		<fx:reference source="controller" />
 	</userData>
 	<HBox styleClass="ticketHeader">
 		<Label fx:id="title" styleClass="ticketTitle">ticket title</Label>
 		<HBox HBox.hgrow="ALWAYS" />
-		<Button fx:id="createCommentButton">comment</Button>
-		<Button fx:id="editCommentButton">edit</Button>
-		<Button fx:id="deleteCommentButton">stomp</Button>
+		<Button fx:id="createCommentButton" onAction="#showCreateCommentBox">comment</Button>
+		<Button fx:id="editTicketButton">edit</Button>
+		<Button fx:id="deleteTicketButton">stomp</Button>
 	</HBox>
 	<Label fx:id="desc" styleClass="ticketDesc" />
 	<VBox fx:id="commentList" styleClass="commentList" alignment="CENTER" />

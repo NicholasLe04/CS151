@@ -15,7 +15,7 @@
 		</HBox>
 	</top>
 	<center>
-		<GridPane fx:id="projectGrid" styleClass="mainProjectGrid" hgap="10" vgap="10">
+		<GridPane fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20">
 		</GridPane>
 	</center>
 	<bottom>

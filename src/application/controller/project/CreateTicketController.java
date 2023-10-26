@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 public class CreateTicketController {
 	
 	private Connection conn;
+	TicketDAO ticketDAO;
 	
 	@FXML public TextField titleField;
 	@FXML public TextArea descField;
@@ -28,6 +29,7 @@ public class CreateTicketController {
 	
 	public void initialize() {
 		conn = SQLConnector.getInstance().getConnection();
+		ticketDAO = new TicketDAO(conn);
 	}
 	
 	public void closeDialog() {
@@ -44,18 +46,18 @@ public class CreateTicketController {
 		String desc = descField.getText();
 		// validation
 		if (title.isEmpty()) titleError.setText("Project Title is required.");
-		else titleError.setText("");
 		// if everything is good, add the project
-		if (!title.isEmpty()) {
-			
+		else {
+			titleError.setText("");
+		
 			Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 			ProjectController projectController = (ProjectController) stage.getUserData();	// get instance of MainController
+						
+			ticketDAO.createTicket(title, desc, projectController.getTitle());		// add project
 			
-			TicketDAO ticketDAO = new TicketDAO(conn);							// add project
-			ticketDAO.createTicket(title, desc, projectController.getTitle());
-			
-			closeDialog();															// close window
-		}
+			closeDialog();	
+		}														// close window
+		
 	}
 	
 }

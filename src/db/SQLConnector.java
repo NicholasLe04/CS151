@@ -56,7 +56,7 @@ public class SQLConnector {
 			);
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS ticket(" +
-					"ticket_id INT AUTO_INCREMENT UNIQUE PRIMARY KEY, " +
+					"ticket_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 					"ticket_title TEXT NOT NULL, " +
 					"desc TEXT, " +
 					"project_title TEXT NOT NULL, " +
@@ -65,10 +65,10 @@ public class SQLConnector {
 			);
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS comment(" +
-					"comment_id INT AUTO_INCREMENT UNIQUE PRIMARY KEY, " +
+					"comment_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 					"created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
 					"comment_body TEXT NOT NULL, " +
-					"ticket_id INT NOT NULL, " +
+					"ticket_id INTEGER NOT NULL, " +
 					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE" +
 				")"
 			);

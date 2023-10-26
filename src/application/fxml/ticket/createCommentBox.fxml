@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+
+<VBox styleClass="createCommentRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ticket.CreateCommentController" stylesheets="@createCommentBox.css">
+    <Label fx:id="bodyError"></Label>
+    <TextArea fx:id="bodyField" />
+    <HBox fx:id="buttonBox" styleClass="buttonBox" alignment="BOTTOM_RIGHT">
+    	<Button fx:id="cancelButton" styleClass="commentCancelButton" onAction="#closeBox">Cancel</Button>
+    	<Button fx:id="createButton" styleClass="commentCreateButton" onAction="#createComment">Create</Button>
+    </HBox>
+</VBox>

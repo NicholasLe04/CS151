@@ -74,26 +74,21 @@ public class ProjectController {
     }
     
     public void showCreateTicketDialog() {
-    	try {
-    		// load fxml
-    		try {
-    			// load fxml
-    			FXMLLoader loader = new FXMLLoader();
-    			loader.setLocation(getClass().getResource("/application/fxml/project/createTicketDialog.fxml"));
-    			Parent root = loader.load();
-    			// open new window
-    			Stage stage = new Stage();
-    			Scene scene = new Scene(root, 800, 500);
-    			stage.setScene(scene);
-    			// pass this Controller instance, so dialog can change things in the project
-    			stage.setUserData(this);
-    			stage.setOnCloseRequest(e -> setButtonState(true));
-    			stage.show();			
-    			// disable button
-    			setButtonState(false);
-    		} catch (IOException e) {
-    			e.printStackTrace();
-    		}
+		try {
+			// load fxml
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/application/fxml/project/createTicketDialog.fxml"));
+			Parent root = loader.load();
+			// open new window
+			Stage stage = new Stage();
+			Scene scene = new Scene(root, 800, 500);
+			stage.setScene(scene);
+			// pass this Controller instance, so dialog can change things in the project
+			stage.setUserData(this);
+			stage.setOnCloseRequest(e -> setButtonState(true));
+			stage.show();			
+			// disable button
+			setButtonState(false);
     	} catch (Exception e) {
     		e.printStackTrace();
     	}
