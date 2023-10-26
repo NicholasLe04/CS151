@@ -1,0 +1,9 @@
+.commentBody {
+	-fx-text-fill: #ffffff;
+	-fx-font-size: 14px;
+}
+
+.commentTimestamp {
+	-fx-text-fill: #dddddd;
+	-fx-font-size: 14px;
+}

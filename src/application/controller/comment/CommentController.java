@@ -39,6 +39,8 @@ public class CommentController {
 		this.timestamp.setText(timestamp.toLocalDate() + " " + timestamp.toLocalTime());
 	}
 	
+	
+	
 	public void showEditCommentBox() {
 		System.out.println("edit comment");
 	}

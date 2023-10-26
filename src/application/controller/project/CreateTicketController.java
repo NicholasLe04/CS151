@@ -1,10 +1,8 @@
 package application.controller.project;
 
 import java.sql.Connection;
-import java.time.LocalDate;
 
 import db.SQLConnector;
-import entries.ProjectDAO;
 import entries.TicketDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

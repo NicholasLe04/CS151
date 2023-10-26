@@ -7,15 +7,12 @@ import application.controller.comment.CommentController;
 import db.SQLConnector;
 import entries.Comment;
 import entries.CommentDAO;
-import entries.TicketDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class TicketController {
 	

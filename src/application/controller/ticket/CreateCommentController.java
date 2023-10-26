@@ -1,4 +1,4 @@
-														package application.controller.ticket;
+package application.controller.ticket;
 
 import java.sql.Connection;
 
@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.VBox;
 
 public class CreateCommentController {
 	

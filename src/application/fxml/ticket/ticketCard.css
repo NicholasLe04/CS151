@@ -1,10 +1,3 @@
-.ticketRoot {
-	-fx-background-color: #444444;
-}
-
-.ticketHeader {
-}
-
 .ticketTitle {
 	-fx-text-fill: #ffffff;
 	-fx-font-size: 20px;
@@ -13,4 +6,9 @@
 .ticketDesc {
 	-fx-text-fill: #ffffff;
 	-fx-font-size: 14px;
+}
+
+/* comment area */
+.commentList {
+	-fx-padding: 10 0 10 10;
 }
