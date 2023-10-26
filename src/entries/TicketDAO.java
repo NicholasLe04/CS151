@@ -36,6 +36,7 @@ public class TicketDAO {
 				tickets.add(new Ticket(ticketId, ticketTitle, ticketDesc));
 			}
 		} catch(SQLException e) {
+			// should never happen
 			e.printStackTrace();
 		}
 		return tickets;
@@ -54,6 +55,7 @@ public class TicketDAO {
 				"VALUES('" + ticketTitle + "', '" + ticketDesc + "', '" + projectTitle + "')"
 			);
 		} catch (SQLException e) {
+			// happens when projectTitle doesn't exist
 			e.printStackTrace();
 		}
 	}
@@ -74,6 +76,7 @@ public class TicketDAO {
 				"WHERE ticket_id='" + ticketId + "'"
 			);
 		} catch(SQLException e) {
+			// happens when ticketId doesn't eixst
 			e.printStackTrace();
 		}
 	}
@@ -91,6 +94,7 @@ public class TicketDAO {
 				"WHERE ticket_id='" + ticketId + "'"
 			);
 		} catch (SQLException e) {
+			// happens when ticketId doesn't exist
 			e.printStackTrace();
 		}
 	}

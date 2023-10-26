@@ -1,11 +1,11 @@
 .projectRoot {
-    -fx-background-color: #444444;
-    -fx-background-radius: 20px;
+	-fx-background-color: #444444;
+	-fx-background-radius: 20px;
 }
 
 /* blue project header */
 .projectHeader {
-	-fx-background-color: #3333ff;
+	-fx-background-color: #2a4e6c;
 	-fx-padding: 20px;
 	-fx-background-radius: 20 20 0 0;
 }

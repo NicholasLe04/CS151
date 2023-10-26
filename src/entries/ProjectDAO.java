@@ -58,7 +58,9 @@ public class ProjectDAO {
 				"VALUES('" + projectTitle + "', '" + projectDate.toString() + "', '" + projectDesc + "')"
 			);
 		} catch(SQLException e) {
-			e.printStackTrace();
+			// happens when projectTitle already exists 
+			// REMOVED SO NO ERRORS ARE THROWN CODE VER 0.4
+			// e.printStackTrace();
 		}
 	}
 
@@ -79,6 +81,7 @@ public class ProjectDAO {
 				"WHERE project_title='" + oldName + "'"
 			);
 		} catch(SQLException e) {
+			// happens when oldName doesn't exist
 			e.printStackTrace();
 		}
 	}
@@ -97,6 +100,7 @@ public class ProjectDAO {
 				"WHERE project_title='" + projectTitle + "'"
 			);
 		} catch (SQLException e) {
+			// happens when projectTitle doesn't exist
 			e.printStackTrace();
 		}
 	}

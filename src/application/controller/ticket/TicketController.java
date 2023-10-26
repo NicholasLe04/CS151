@@ -1,5 +1,6 @@
 package application.controller.ticket;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.ArrayList;
 
@@ -66,7 +67,7 @@ public class TicketController {
 			setButtonState(false);
 			ProjectController projectController = (ProjectController) ticketRoot.getParent().getParent().getUserData();
 			projectController.setButtonState(false);
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -104,7 +105,7 @@ public class TicketController {
 			// add comment
 				commentList.getChildren().add(commentNode);
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

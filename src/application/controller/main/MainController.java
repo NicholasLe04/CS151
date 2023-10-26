@@ -70,7 +70,7 @@ public class MainController {
 				// add project
 				projectGrid.add(projectNode, i % 4, i / 4);
 			}
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

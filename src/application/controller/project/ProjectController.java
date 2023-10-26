@@ -1,5 +1,6 @@
 package application.controller.project;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -87,7 +88,7 @@ public class ProjectController {
 			stage.show();			
 			// disable button
 			setButtonState(false);
-    	} catch (Exception e) {
+    	} catch (IOException e) {
     		e.printStackTrace();
     	}
     }
@@ -111,7 +112,7 @@ public class ProjectController {
 	    		// add ticket
 	    		ticketList.getChildren().add(ticketNode);
 	    	}
-    	} catch (Exception e) {
+    	} catch (IOException e) {
     		e.printStackTrace();
     	}
     }

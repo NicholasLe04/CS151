@@ -1,6 +1,6 @@
 .ticketTitle {
 	-fx-text-fill: #ffffff;
-	-fx-font-size: 20px;
+	-fx-font-size: 22px;
 }
 
 .ticketDesc {
@@ -10,5 +10,5 @@
 
 /* comment area */
 .commentList {
-	-fx-padding: 10 0 10 10;
+	-fx-padding: 20 0 10 20;
 }

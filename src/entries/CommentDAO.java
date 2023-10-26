@@ -42,6 +42,7 @@ public class CommentDAO {
 				comments.add(new Comment(commentId, commentBody, timestamp));
 			}
 		} catch(SQLException e) {
+			// should never happen
 			e.printStackTrace();
 		}
 		return comments;
@@ -60,6 +61,7 @@ public class CommentDAO {
 				"VALUES('" + LocalDateTime.now() + "', '" + commentBody + "', '" + ticketId + "')"
 			);
 		} catch (SQLException e) {
+			// happens when ticketId is not found
 			e.printStackTrace();
 		}
 	}
@@ -79,6 +81,7 @@ public class CommentDAO {
 				"WHERE comment_id='" + commentId + "'"
 			);
 		} catch (SQLException e) {
+			// happens when id is not found
 			e.printStackTrace();
 		}
 	}
@@ -96,6 +99,7 @@ public class CommentDAO {
 				"WHERE comment_id='" + commentId + "'"
 			);
 		} catch (SQLException e) {
+			// happens when commentId is not found
 			e.printStackTrace();
 		}
 	}
