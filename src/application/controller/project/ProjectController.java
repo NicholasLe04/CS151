@@ -99,15 +99,15 @@ public class ProjectController {
     	
     	try {
     		ticketList.getChildren().clear();
-	    	for (int i = 0; i < tickets.size(); i++) {
+	    	for (Ticket ticket : tickets) {
 	    		// load ticket fxml
 	    		FXMLLoader ticketLoader = new FXMLLoader(getClass().getResource("/application/fxml/ticket/ticketCard.fxml"));
 	    		Parent ticketNode = ticketLoader.load();
 	    		// modify the ticketNode
 	    		TicketController controller = (TicketController) ticketNode.getUserData();
-	    		controller.setId(tickets.get(i).getId());
-	    		controller.setTitle(tickets.get(i).getTitle());
-	    		controller.setDesc(tickets.get(i).getDesc());
+	    		controller.setId(ticket.getId());
+	    		controller.setTitle(ticket.getTitle());
+	    		controller.setDesc(ticket.getDesc());
 	    		// get comments too 
 	    		controller.updateComments();
 	    		// this passes the ProjectController to the ticketList

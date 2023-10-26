@@ -66,7 +66,7 @@ public class SQLConnector {
 			statement.execute(
 				"CREATE TABLE IF NOT EXISTS comment(" +
 					"comment_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-					"created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
+					"created_at TEXT NOT NULL, " +
 					"comment_body TEXT NOT NULL, " +
 					"ticket_id INTEGER NOT NULL, " +
 					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE" +

@@ -56,8 +56,8 @@ public class CommentDAO {
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(
-				"INSERT INTO comment(comment_body, ticket_id) " +
-				"VALUES('" + commentBody + "', '" + ticketId + "')"
+				"INSERT INTO comment(created_at, comment_body, ticket_id) " +
+				"VALUES('" + LocalDateTime.now() + "', '" + commentBody + "', '" + ticketId + "')"
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();

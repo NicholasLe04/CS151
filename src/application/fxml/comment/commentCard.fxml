@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
+
+<VBox styleClass="commentRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.comment.CommentController" stylesheets="@commentCard.css">
+	<userData>
+		<fx:reference source="controller"/>
+	</userData>
+	<HBox>
+		<HBox HBox.hgrow="ALWAYS" />
+		<Button fx:id="editCommentButton">edit</Button>
+		<Button fx:id="deleteCommentButton">stomp</Button>
+	</HBox>
+	<Label fx:id="body" styleClass="commentBody">body</Label>
+	<Label fx:id="timestamp" styleClass="commentTimestamp">timestamp</Label>
+</VBox>

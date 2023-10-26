@@ -1,8 +1,11 @@
 package application.controller.ticket;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
+import application.controller.comment.CommentController;
 import db.SQLConnector;
+import entries.Comment;
 import entries.CommentDAO;
 import entries.TicketDAO;
 import javafx.fxml.FXML;
@@ -17,7 +20,6 @@ import javafx.stage.Stage;
 public class TicketController {
 	
 	private Connection conn;
-	private TicketDAO ticketDAO;
 	private CommentDAO commentDAO;
 	
 	private int id;
@@ -33,8 +35,8 @@ public class TicketController {
 	@FXML
 	public void initialize() {
 		conn = SQLConnector.getInstance().getConnection();
-		ticketDAO = new TicketDAO(conn);
 		commentDAO = new CommentDAO(conn);
+		updateComments();
 	}
 	
 	public int getId() {
@@ -72,12 +74,30 @@ public class TicketController {
 		return ticketRoot; 
 	}
 
-	public void showEditCommentBox() {
-		System.out.println("edit comment");
+	public void showEditTicketBox() {
+		System.out.println("edit ticket");
 	}
 	
 	public void updateComments() {
-		System.out.println("comments updated");
+		ArrayList<Comment> comments = commentDAO.getComments(id);
+		
+		try {
+			commentList.getChildren().clear();
+			for (Comment comment : comments) {
+				// load comment fxml
+				FXMLLoader commentLoader = new FXMLLoader(getClass().getResource("/application/fxml/comment/commentCard.fxml"));
+				Parent commentNode = commentLoader.load();
+				// modify the ticketNode
+				CommentController controller = (CommentController) commentNode.getUserData();
+				controller.setId(comment.getId());
+				controller.setBody(comment.getBody());
+				controller.setTimestamp(comment.getTimestamp());
+				// add comment
+				commentList.getChildren().add(commentNode);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void setButtonState(boolean state) {
