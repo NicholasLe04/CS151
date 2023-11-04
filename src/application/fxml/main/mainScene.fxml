@@ -8,19 +8,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane styleClass="mainRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.main.MainController" stylesheets="@mainScene.css">	
+<StackPane styleClass="mainRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.main.MainController" stylesheets="@mainScene.css">
 	<userData>
 		<fx:reference source="controller" />
 	</userData>
-	<top>
-		<HBox styleClass="mainHeader">
-			<Label styleClass="mainTitleLabel">Projects</Label>
+	<BorderPane>	
+		<top>
+			<HBox styleClass="mainHeader">
+				<Label styleClass="mainTitleLabel">Projects</Label>
+			</HBox>
+		</top>
+		<center>
+			<FlowPane minWidth="0" minHeight="0" fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20" />
+		</center>
+	</BorderPane>
+		<HBox StackPane.alignment="BOTTOM_RIGHT" maxWidth="80" maxHeight="80" pickOnBounds="false">
+			<Button fx:id="createProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
 		</HBox>
-	</top>
-	<center>
-		<FlowPane minWidth="0" fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20" />
-	</center>
-	<bottom>
-		<Button fx:id="createProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
-	</bottom>
-</BorderPane>
+</StackPane>

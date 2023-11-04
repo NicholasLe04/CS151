@@ -26,8 +26,6 @@ public class MainController {
 	
 	@FXML
 	public void initialize() {
-		createProjectButton.setLayoutX(10);
-		createProjectButton.setLayoutY(10);
 		conn = SQLConnector.getInstance().getConnection();
 		projectDAO = new ProjectDAO(conn);
 		updateProjects();
