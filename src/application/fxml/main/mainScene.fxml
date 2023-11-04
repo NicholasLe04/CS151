@@ -7,6 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ScrollPane?>
 
 <StackPane styleClass="mainRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.main.MainController" stylesheets="@mainScene.css">
 	<userData>
@@ -19,7 +20,9 @@
 			</HBox>
 		</top>
 		<center>
-			<FlowPane minWidth="0" minHeight="0" fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20" />
+			<ScrollPane fitToWidth="true" styleClass="mainScrollable">
+				<FlowPane minWidth="0" minHeight="0" fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20" />
+			</ScrollPane>
 		</center>
 	</BorderPane>
 		<HBox StackPane.alignment="BOTTOM_RIGHT" maxWidth="80" maxHeight="80" pickOnBounds="false">
