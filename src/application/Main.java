@@ -24,7 +24,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		// TODO: REMOVE THIS. THIS IS JUST FOR CODE VER 0.4
 		Connection conn = SQLConnector.getInstance().getConnection();
-		ProjectDAO projectDAO = new ProjectDAO(conn);
+		/*ProjectDAO projectDAO = new ProjectDAO(conn);
 		TicketDAO ticketDAO = new TicketDAO(conn);
 		CommentDAO commentDAO = new CommentDAO(conn);
 		projectDAO.createProject("kanji-classifier", LocalDate.now(), "OCR webapp that classifies 3000+ Japanese Kanji. https://github.com/al3xbro/kanji-classifier");
@@ -34,7 +34,7 @@ public class Main extends Application {
 		ticketDAO.createTicket("model is too slow", "the CNN takes forever to classify things under load. pssst... try adding/deleting your own projects, tickets, and comments. everything is fully functional, except for editing!", "kanji-classifier");
 		commentDAO.createComment("try hosting the model on AWS", 2);
 		commentDAO.createComment("need to compress model as well", 2);
-		ticketDAO.createTicket("security concerns with endpoint", "i fear my home network may be hacked", "kanji-classifier");
+		ticketDAO.createTicket("security concerns with endpoint", "i fear my home network may be hacked", "kanji-classifier");*/
 		
 		try {
 			// load fxml

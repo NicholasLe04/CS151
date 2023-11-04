@@ -13,7 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -22,10 +22,12 @@ public class MainController {
 	private ProjectDAO projectDAO;
 	
 	@FXML private Button createProjectButton;
-	@FXML private GridPane projectGrid;
+	@FXML private FlowPane projectGrid;
 	
 	@FXML
 	public void initialize() {
+		createProjectButton.setLayoutX(10);
+		createProjectButton.setLayoutY(10);
 		conn = SQLConnector.getInstance().getConnection();
 		projectDAO = new ProjectDAO(conn);
 		updateProjects();
@@ -56,19 +58,19 @@ public class MainController {
 		
 		try {
 			projectGrid.getChildren().clear();
-			for (int i = 0; i < projects.size(); i++) {
+			for (Project project : projects) {
 				// load project fxml
 				FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/application/fxml/project/projectCard.fxml"));
 				Parent projectNode = projectLoader.load();
 				// modify the projectNode
 				ProjectController controller = (ProjectController) projectNode.getUserData();
-				controller.setTitle(projects.get(i).getTitle());
-				controller.setDate(projects.get(i).getDate());
-				controller.setDesc(projects.get(i).getDesc());
+				controller.setTitle(project.getTitle());
+				controller.setDate(project.getDate());
+				controller.setDesc(project.getDesc());
 				// get tickets too
 				controller.updateTickets();
 				// add project
-				projectGrid.add(projectNode, i % 4, i / 4);
+				projectGrid.getChildren().add(projectNode);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

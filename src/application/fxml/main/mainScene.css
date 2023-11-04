@@ -34,16 +34,8 @@
     -fx-background-color: #bbbbbb;
 }
 
-.mainButtonBox {
-    /*
-    read: "-fx-margin: 30px"
-    fxml does not have margin as a property for some reason 
-    */
-    -fx-padding: 30px;
-    -fx-border-insets: 30px;
-    -fx-background-insets: 30px;
-}
-
 .mainProjectGrid {
     -fx-padding: 25px;
+    -fx-border-width: 2px;
+    -fx-border-color: red;
 }

@@ -18,12 +18,9 @@
 		</HBox>
 	</top>
 	<center>
-		<GridPane fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20">
-		</GridPane>
+		<FlowPane minWidth="0" fx:id="projectGrid" styleClass="mainProjectGrid" hgap="20" vgap="20" />
 	</center>
 	<bottom>
-		<VBox styleClass="mainButtonBox" alignment="BOTTOM_RIGHT">
-			<Button fx:id="createProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
-		</VBox>
+		<Button fx:id="createProjectButton" styleClass="mainNewProjectButton" onAction="#showCreateProjectDialog">+</Button>
 	</bottom>
 </BorderPane>
