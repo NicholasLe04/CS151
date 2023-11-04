@@ -57,6 +57,10 @@ public class TicketController {
     	this.desc.setText(desc);
     }
 
+	public VBox getTicketRoot() {
+		return ticketRoot; 
+	}
+	
 	public void showCreateCommentBox() {
 		try {
 			// load fxml
@@ -65,16 +69,11 @@ public class TicketController {
 			Parent root = loader.load();
 			ticketRoot.getChildren().add(root);
 			setButtonState(false);
-			ProjectController projectController = (ProjectController) ticketRoot.getParent().getParent().getUserData();
-			projectController.setButtonState(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public VBox getTicketRoot() {
-		return ticketRoot; 
-	}
 	
 	public void deleteTicket() {
 		// add confirm dialog
@@ -115,5 +114,7 @@ public class TicketController {
 		createCommentButton.setDisable(!state);
     	editTicketButton.setDisable(!state);
     	deleteTicketButton.setDisable(!state);
+    	ProjectController projectController = (ProjectController) ticketRoot.getParent().getParent().getUserData();
+		projectController.setButtonState(state);
 	}
 }

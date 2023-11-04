@@ -9,6 +9,7 @@ import entries.CommentDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 public class CommentController {
 	
@@ -18,6 +19,7 @@ public class CommentController {
 	private int id;
 	@FXML private Label body;
 	@FXML private Label timestamp;
+	@FXML private VBox commentRoot;
 	
 	@FXML private Button editCommentButton;
 	@FXML private Button deleteCommentButton;
@@ -38,6 +40,10 @@ public class CommentController {
 	
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp.setText(timestamp.toLocalDate() + " " + timestamp.toLocalTime());
+	}
+	
+	public VBox getCommentRoot() {
+		return commentRoot;
 	}
 	
 	public void deleteComment() {

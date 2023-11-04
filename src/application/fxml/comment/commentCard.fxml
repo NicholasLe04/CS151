@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.control.Button?>
 
-<VBox styleClass="commentRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.comment.CommentController" stylesheets="@commentCard.css">
+<VBox fx:id="commentRoot" styleClass="commentRoot" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.comment.CommentController" stylesheets="@commentCard.css">
 	<userData>
 		<fx:reference source="controller"/>
 	</userData>
@@ -18,6 +18,6 @@
 		<Button fx:id="editCommentButton" onAction="#showEditCommentBox">edit</Button>
 		<Button fx:id="deleteCommentButton" onAction="#deleteComment">stomp</Button>
 	</HBox>
-	<Label fx:id="body" styleClass="commentBody" wrapText="true">body</Label>
-	<Label fx:id="timestamp" styleClass="commentTimestamp">timestamp</Label>
+	<Label fx:id="body" styleClass="commentBody" wrapText="true" />
+	<Label fx:id="timestamp" styleClass="commentTimestamp" />
 </VBox>

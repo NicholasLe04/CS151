@@ -14,7 +14,7 @@
 		<fx:reference source="controller" />
 	</userData>
 	<HBox styleClass="ticketHeader">
-		<Label fx:id="title" styleClass="ticketTitle">ticket title</Label>
+		<Label fx:id="title" styleClass="ticketTitle" />
 		<HBox HBox.hgrow="ALWAYS" />
 		<Button fx:id="createCommentButton" onAction="#showCreateCommentBox">comment</Button>
 		<Button fx:id="editTicketButton" onAction="#showEditTicketDialog">edit</Button>

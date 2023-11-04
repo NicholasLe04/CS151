@@ -29,6 +29,7 @@ public class ProjectController {
 	@FXML private Label title;
 	@FXML private Label date;
 	@FXML private Label desc;
+	@FXML private VBox projectRoot;
 	
 	@FXML private Button createTicketButton;
 	@FXML private Button editProjectButton;
@@ -57,6 +58,10 @@ public class ProjectController {
     
     public void setDesc(String desc) {
     	this.desc.setText(desc);
+    }
+    
+    public VBox getProjectRoot() {
+    	return projectRoot;
     }
     
     public void deleteProject() {

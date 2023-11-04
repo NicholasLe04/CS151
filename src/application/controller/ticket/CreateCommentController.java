@@ -29,9 +29,7 @@ public class CreateCommentController {
 
     public void closeBox() {
     	TicketController ticketController = (TicketController) cancelButton.getParent().getParent().getParent().getUserData();
-    	ProjectController projectController = (ProjectController) ticketController.getTicketRoot().getParent().getParent().getUserData();
         ticketController.updateComments();
-        projectController.setButtonState(true);
         ticketController.setButtonState(true);
         ticketController.getTicketRoot().getChildren().remove(cancelButton.getParent().getParent());
     }
