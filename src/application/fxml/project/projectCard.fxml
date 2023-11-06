@@ -13,12 +13,12 @@
 		<fx:reference source="controller" />
 	</userData>
     <VBox styleClass="projectHeader">
-        <HBox>
+        <HBox spacing="5">
             <Label fx:id="title" styleClass="projectTitle" />
             <HBox HBox.hgrow="ALWAYS" />
-            <Button fx:id="createTicketButton" onAction="#showCreateTicketDialog">ticket</Button>
-            <Button fx:id="editProjectButton" onAction="#showEditProjectDialog">edit</Button>
-            <Button fx:id="deleteProjectButton" onAction="#deleteProject">stomp</Button>
+            <Button fx:id="createTicketButton" styleClass="projectCreateTicketButton" onAction="#showCreateTicketDialog">ticket</Button>
+            <Button fx:id="editProjectButton" styleClass="projectEditProjectButton" onAction="#showEditProjectDialog">edit</Button>
+            <Button fx:id="deleteProjectButton" styleClass="projectDeleteProjectButton" onAction="#deleteProject">stomp</Button>
         </HBox>
         <Label fx:id="date" styleClass="projectDate" />
         <Label fx:id="desc" styleClass="projectDesc" wrapText="true" />

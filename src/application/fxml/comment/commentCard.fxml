@@ -13,10 +13,10 @@
 	<userData>
 		<fx:reference source="controller"/>
 	</userData>
-	<HBox>
+	<HBox spacing="5">
 		<HBox HBox.hgrow="ALWAYS" />
-		<Button fx:id="editCommentButton" onAction="#showEditCommentBox">edit</Button>
-		<Button fx:id="deleteCommentButton" onAction="#deleteComment">stomp</Button>
+		<Button fx:id="editCommentButton" styleClass="commentEditCommentButton" onAction="#showEditCommentBox" />
+		<Button fx:id="deleteCommentButton" styleClass="commentDeleteCommentButton" onAction="#deleteComment" />
 	</HBox>
 	<Label fx:id="body" styleClass="commentBody" wrapText="true" />
 	<Label fx:id="timestamp" styleClass="commentTimestamp" />
