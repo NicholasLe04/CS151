@@ -8,11 +8,13 @@ import application.controller.project.ProjectController;
 import db.SQLConnector;
 import entries.Project;
 import entries.ProjectDAO;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
@@ -23,6 +25,7 @@ public class MainController {
 	
 	@FXML private Button createProjectButton;
 	@FXML private FlowPane projectGrid;
+	@FXML private TextField searchBar;
 	
 	@FXML
 	public void initialize() {
@@ -50,9 +53,15 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	public void onEnterPressed(ActionEvent event) {
+		// Update to only display searched projects
+        updateProjects();
+    }
 
 	public void updateProjects() {
-		ArrayList<Project> projects = projectDAO.getProjects();
+		ArrayList<Project> projects = projectDAO.getProjects(searchBar.getText());
 		
 		try {
 			projectGrid.getChildren().clear();

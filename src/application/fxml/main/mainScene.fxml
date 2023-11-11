@@ -17,7 +17,9 @@
 		<top>
 			<HBox styleClass="mainHeader">
 				<Label styleClass="mainTitleLabel">Projects</Label>
-			</HBox>
+        		<Region prefWidth="200.0"/>
+				<TextField fx:id="searchBar" prefWidth="300.0" onAction="#onEnterPressed"></TextField>
+			</HBox> 
 		</top>
 		<center>
 			<ScrollPane fitToWidth="true" styleClass="mainScrollable">
