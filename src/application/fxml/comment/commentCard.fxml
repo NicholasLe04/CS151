@@ -15,8 +15,16 @@
 	</userData>
 	<HBox spacing="5">
 		<HBox HBox.hgrow="ALWAYS" />
-		<Button fx:id="editCommentButton" styleClass="commentEditCommentButton" onAction="#showEditCommentBox" />
-		<Button fx:id="deleteCommentButton" styleClass="commentDeleteCommentButton" onAction="#deleteComment" />
+		<Button fx:id="editCommentButton" styleClass="commentEditCommentButton" onAction="#showEditCommentBox">
+			<tooltip>
+				<Tooltip text="Edit Comment" />
+			</tooltip>
+		</Button>
+		<Button fx:id="deleteCommentButton" styleClass="commentDeleteCommentButton" onAction="#deleteComment">
+			<tooltip>
+				<Tooltip text="Delete Comment" />
+			</tooltip>
+		</Button>
 	</HBox>
 	<Label fx:id="body" styleClass="commentBody" wrapText="true" />
 	<Label fx:id="timestamp" styleClass="commentTimestamp" />

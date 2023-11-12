@@ -16,9 +16,21 @@
 	<HBox styleClass="ticketHeader" spacing="5">
 		<Label fx:id="title" styleClass="ticketTitle" />
 		<HBox HBox.hgrow="ALWAYS" />
-		<Button fx:id="createCommentButton" styleClass="ticketCreateCommentButton" onAction="#showCreateCommentBox">comment</Button>
-		<Button fx:id="editTicketButton" styleClass="ticketEditTicketButton" onAction="#showEditTicketDialog">edit</Button>
-		<Button fx:id="deleteTicketButton" styleClass="ticketDeleteTicketButton" onAction="#deleteTicket">stomp</Button>
+		<Button fx:id="createCommentButton" styleClass="ticketCreateCommentButton" onAction="#showCreateCommentBox">
+			<tooltip>
+           		<Tooltip text="New Comment"/>
+           	</tooltip>
+		</Button>
+		<Button fx:id="editTicketButton" styleClass="ticketEditTicketButton" onAction="#showEditTicketDialog">
+			<tooltip>
+           		<Tooltip text="Edit Ticket"/>
+           	</tooltip>
+		</Button>
+		<Button fx:id="deleteTicketButton" styleClass="ticketDeleteTicketButton" onAction="#deleteTicket">
+			<tooltip>
+           		<Tooltip text="Delete Ticket"/>
+           	</tooltip>
+		</Button>
 	</HBox>
 	<Label fx:id="desc" styleClass="ticketDesc" wrapText="true" />
 	<VBox fx:id="commentList" styleClass="commentList" alignment="CENTER" spacing="10" />
