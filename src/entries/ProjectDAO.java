@@ -18,39 +18,13 @@ public class ProjectDAO {
 	public ProjectDAO(Connection conn) {
 		this.conn = conn;
 	}
-
-	/**
-	 * Get persistent Projects
-	 * @return ArrayList<Project> projects
-	 */
-	public ArrayList<Project> getProjects() {
-		ArrayList<Project> toReturn = new ArrayList<>();
-		try {
-			// queries for all projects
-			Statement statement = conn.createStatement();
-			ResultSet res = statement.executeQuery(
-				"SELECT * " +
-				"FROM project"
-			);
-			// places everything in ArrayList projects
-			while (res.next()) {
-				String projectTitle = res.getString(1);
-				String projectStartDate = res.getString(2);
-				String projectDesc = res.getString(3);
-				toReturn.add(new Project(projectTitle, LocalDate.parse(projectStartDate), projectDesc));
-			}
-		} catch(SQLException e) {
-			e.printStackTrace();
-		}	
-		return toReturn;
-	}
 	
 	/**
 	 * Get Projects that contain the substring within its name or its Tickets' titles
 	 * @param substring
 	 * @return ArrayList<Project> projects
 	 */
-	public ArrayList<Project> getProjects(String substring) {
+	public ArrayList<Project> searchProjects(String substring) {
 		ArrayList<Project> toReturn = new ArrayList<>();
 		try {
 			// queries for all projects

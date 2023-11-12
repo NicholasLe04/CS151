@@ -31,7 +31,10 @@ public class MainController {
 	public void initialize() {
 		conn = SQLConnector.getInstance().getConnection();
 		projectDAO = new ProjectDAO(conn);
-		updateProjects();
+		updateProjects("");
+		searchBar.textProperty().addListener((observable, oldValue, newValue)-> {
+			updateProjects(newValue);
+		});
 	}
 	
 	public void showCreateProjectDialog() {
@@ -53,15 +56,10 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
-	
-	@FXML
-	public void onEnterPressed(ActionEvent event) {
-		// Update to only display searched projects
-        updateProjects();
-    }
 
-	public void updateProjects() {
-		ArrayList<Project> projects = projectDAO.getProjects(searchBar.getText());
+	// TODO: add highlight on projects with that name
+	public void updateProjects(String searchText) {
+		ArrayList<Project> projects = projectDAO.searchProjects(searchText);
 		
 		try {
 			projectGrid.getChildren().clear();

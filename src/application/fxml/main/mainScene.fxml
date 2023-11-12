@@ -15,10 +15,12 @@
 	</userData>
 	<BorderPane>	
 		<top>
-			<HBox styleClass="mainHeader">
+			<HBox styleClass="mainHeader" alignment="CENTER">
 				<Label styleClass="mainTitleLabel">Projects</Label>
-        		<Region prefWidth="200.0"/>
-				<TextField fx:id="searchBar" prefWidth="300.0" onAction="#onEnterPressed"></TextField>
+				<Region HBox.hgrow="ALWAYS" />
+				<TextField fx:id="searchBar" styleClass="mainSearchBar" promptText="Search projects"></TextField>
+				<Region HBox.hgrow="ALWAYS" />
+				<Label styleClass="mainHidden">Projects</Label>
 			</HBox> 
 		</top>
 		<center>

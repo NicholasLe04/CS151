@@ -39,7 +39,7 @@ public class CreateProjectController {
     public void closeDialog() {
 		Stage stage = (Stage) createButton.getScene().getWindow();				// get this stage
 		MainController mainController = (MainController) stage.getUserData();	// get instance of MainController
-		mainController.updateProjects();							// update projectGrid
+		mainController.updateProjects("");							// update projectGrid
 		mainController.setButtonState(true);						// enable newProjectButton
 		stage.close();															// close window
 	}

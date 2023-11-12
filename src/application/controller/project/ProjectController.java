@@ -70,7 +70,7 @@ public class ProjectController {
     	// update projectGrid
     	// gets the MainController instance (passed when the projectCard was created). this is ass but idk how to pass props in jfx
     	MainController controller = (MainController) ticketList.getParent().getParent().getParent().getParent().getParent().getParent().getParent().getUserData();
-    	controller.updateProjects();
+    	controller.updateProjects("");
         
     }
 

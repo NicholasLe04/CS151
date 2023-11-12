@@ -3,7 +3,7 @@
 }
 
 .mainHeader {
-    -fx-padding: 25 0 10 75;
+    -fx-padding: 25 75 25 75;
     -fx-background-color: #2a4e6c;
     /* fix color */
 }
@@ -36,6 +36,23 @@
 
 .mainProjectGrid {
     -fx-padding: 25px;
+}
+
+.mainSearchBar {
+	-fx-pref-width: 400px;
+	-fx-pref-height: 40px;
+	-fx-prompt-text-fill: #aaaaaa;
+	-fx-text-fill: white;
+	-fx-font-size: 16px;
+	-fx-background-radius: 10px;
+	-fx-background-color: #333333;
+}
+
+.mainHidden {
+	-fx-text-fill: transparent;
+	-fx-font-family: "Helvetica";
+    -fx-font-weight: bold;
+    -fx-font-size: 40;
 }
 
 .mainScrollable {
