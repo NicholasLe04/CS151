@@ -71,6 +71,30 @@ public class SQLConnector {
 					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE ON UPDATE CASCADE" +
 				")"
 			);
+			statement.execute(
+				"CREATE INDEX IF NOT EXISTS project_title_idx " +
+					"ON project(project_title)"
+			);
+			statement.execute(
+				"CREATE INDEX IF NOT EXISTS ticket_id_idx " +
+					"ON ticket(ticket_id)"
+			);
+			statement.execute(
+				"CREATE INDEX IF NOT EXISTS comment_id_idx " +
+					"ON comment(comment_id)"
+			);
+			statement.execute(
+				"CREATE INDEX IF NOT EXISTS ticket_title_idx " +
+					"ON ticket(ticket_title)"
+			);
+			statement.execute(
+				"CREATE INDEX IF NOT EXISTS ticket_project_title_idx " +
+					"ON ticket(project_title)"
+			);
+			statement.execute(
+				"CREATE INDEX IF NOT EXISTS comment_ticket_id_idx " +
+					"ON comment(ticket_id)"
+			);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
