@@ -18,7 +18,7 @@
 			<HBox styleClass="mainHeader" alignment="CENTER">
 				<Label styleClass="mainTitleLabel">Projects</Label>
 				<Region HBox.hgrow="ALWAYS" />
-				<TextField fx:id="searchBar" styleClass="mainSearchBar" promptText="Search projects"></TextField>
+				<TextField fx:id="searchBar" styleClass="mainSearchBar" promptText="Search projects and tickets..."></TextField>
 				<Region HBox.hgrow="ALWAYS" />
 				<Label styleClass="mainHidden">Projects</Label>
 			</HBox> 
