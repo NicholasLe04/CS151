@@ -29,7 +29,7 @@ public class MainController {
 	
 	@FXML
 	public void initialize() {
-		conn = SQLConnector.getInstance().getConnection();
+		conn = SQLConnector.getConnection();
 		projectDAO = new ProjectDAO(conn);
 		updateProjects("");
 		searchBar.textProperty().addListener((observable, oldValue, newValue)-> {

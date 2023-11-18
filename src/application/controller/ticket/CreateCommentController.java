@@ -23,7 +23,7 @@ public class CreateCommentController {
 
     @FXML
     public void initialize() {
-        conn = SQLConnector.getInstance().getConnection();
+        conn = SQLConnector.getConnection();
         commentDAO = new CommentDAO(conn);
     }
 

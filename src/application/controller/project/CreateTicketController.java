@@ -26,7 +26,7 @@ public class CreateTicketController {
     @FXML public Button createButton;
 	
 	public void initialize() {
-		conn = SQLConnector.getInstance().getConnection();
+		conn = SQLConnector.getConnection();
 		ticketDAO = new TicketDAO(conn);
 	}
 	

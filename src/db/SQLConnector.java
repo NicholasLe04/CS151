@@ -11,8 +11,7 @@ import java.sql.Statement;
 
 public class SQLConnector {
 	
-	private static SQLConnector instance = null;
-	private Connection conn;
+	private static Connection conn;
 
 	/**
 	 * Establish connection with SQLite DB. To be run only once on application startup.
@@ -77,16 +76,12 @@ public class SQLConnector {
 		}
 	}
 	
-	public static SQLConnector getInstance() {
-		if (instance == null) instance = new SQLConnector();
-		return instance;
-	}
-	
 	/**
 	 * Return db Connection object.
 	 * @return Connection object
 	 */
-	public Connection getConnection() {
+	public static Connection getConnection() {
+		if (conn == null) new SQLConnector();
 		return conn;
 	}
 }

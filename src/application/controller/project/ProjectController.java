@@ -38,7 +38,7 @@ public class ProjectController {
 	
 	@FXML
 	public void initialize() {
-		conn = SQLConnector.getInstance().getConnection();
+		conn = SQLConnector.getConnection();
 		projectDAO = new ProjectDAO(conn);
 		ticketDAO = new TicketDAO(conn);
 		updateTickets();
