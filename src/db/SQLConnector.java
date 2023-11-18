@@ -59,7 +59,7 @@ public class SQLConnector {
 					"ticket_title TEXT NOT NULL, " +
 					"desc TEXT, " +
 					"project_title TEXT NOT NULL, " +
-					"FOREIGN KEY(project_title) REFERENCES project(project_title) ON DELETE CASCADE" +
+					"FOREIGN KEY(project_title) REFERENCES project(project_title) ON DELETE CASCADE ON UPDATE CASCADE" +
 				")"
 			);
 			statement.execute(
@@ -68,7 +68,7 @@ public class SQLConnector {
 					"created_at TEXT NOT NULL, " +
 					"comment_body TEXT NOT NULL, " +
 					"ticket_id INTEGER NOT NULL, " +
-					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE" +
+					"FOREIGN KEY(ticket_id) REFERENCES ticket(ticket_id) ON DELETE CASCADE ON UPDATE CASCADE" +
 				")"
 			);
 		} catch(SQLException e) {

@@ -48,6 +48,14 @@ public class ProjectController {
 		return title.getText();
 	}
 	
+	public LocalDate getDate() {
+		return LocalDate.parse(date.getText().substring(11));
+	}
+	
+	public String getDesc() {
+		return desc.getText();
+	}
+	
     public void setTitle(String title) {
         this.title.setText(title);
     }
@@ -75,7 +83,24 @@ public class ProjectController {
     }
 
     public void showEditProjectDialog() {
-    	System.out.println("edit " + title.getText());
+    	try {
+			// load fxml
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/application/fxml/project/editProjectDialog.fxml"));
+			Parent root = loader.load();
+			// open new window
+			Stage stage = new Stage();
+			Scene scene = new Scene(root, 800, 500);
+			stage.setScene(scene);
+			stage.setOnCloseRequest(e -> setButtonState(true));
+			stage.setUserData(this);
+			((EditProjectController) loader.getController()).populateFields(stage);
+			stage.show();			
+			// disable button
+			setButtonState(false);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     }
     
     public void showCreateTicketDialog() {

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.project.EditProjectController" stylesheets="@editProjectDialog.css">
+	<top>
+		<HBox styleClass="header">
+			<Label fx:id="titleLabel" styleClass="titleLabel"></Label>
+		</HBox>
+	</top>
+	<center>
+		<VBox styleClass="form">
+			<VBox styleClass="projectTitle">
+				<HBox>
+					<Label styleClass="projectTitleLabel">New Project Title:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="titleError" styleClass="errorMessage"></Label>
+				</HBox>
+				<TextField fx:id="titleField" styleClass="projectTitleField"/>
+			</VBox>
+			<VBox styleClass="projectDate">
+				<HBox>
+					<Label styleClass="projectDateLabel">New Date:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="dateError" styleClass="errorMessage" alignment="CENTER_RIGHT"></Label>
+				</HBox>
+				<DatePicker fx:id="dateField" styleClass="projectDateField"/> <!-- add default value using controller -->
+			</VBox>
+			<VBox styleClass="projectDesc">
+				<HBox>
+					<Label styleClass="projectDescLabel">New Description:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="descError" styleClass="errorMessage" alignment="CENTER_RIGHT"></Label>
+				</HBox>
+				<TextArea fx:id="descField" styleClass="projectDescField"/>
+			</VBox>
+		</VBox>
+	</center>
+	<bottom>
+		<HBox fx:id="buttonBox" styleClass="buttonBox" alignment="BOTTOM_RIGHT">
+			<Button fx:id="cancelButton" styleClass="projectCancelButton" onAction="#closeDialog">Cancel</Button>
+			<Button fx:id="editButton" styleClass="projectEditButton" onAction="#editProject">Create</Button>
+		</HBox>
+	</bottom>
+</BorderPane>

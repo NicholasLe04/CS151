@@ -1,0 +1,68 @@
+.root {
+	-fx-background-color: #333333;
+}
+
+.header {
+	-fx-padding: 25 0 10 75;
+	-fx-background-color: #2a4e6c;
+	/* fix color */
+}
+
+.titleLabel {
+	-fx-text-fill: white;
+	-fx-font-family: "Helvetica";
+	-fx-font-weight: bold;
+	-fx-font-size: 40;
+}
+
+.projectTitle,
+.projectDate,
+.projectDesc {
+	-fx-spacing: 5px;
+}
+
+.projectTitleLabel,
+.projectDateLabel,
+.projectDescLabel {
+	-fx-text-fill: white;
+}
+
+.form {
+	-fx-padding: 25 50 25 50;
+	-fx-spacing: 15px;
+}
+
+.buttonBox {
+	-fx-padding: 25 50 25 25;
+	-fx-spacing: 20px;
+}
+
+.projectTitleField {
+	-fx-background-color: #222222;
+	-fx-text-fill: #ffffff;
+}
+
+.projectDateField {
+	-fx-background-color: transparent;
+}
+
+.projectDateField>.text-field {
+	-fx-background-color: #222222;
+	-fx-text-fill: #ffffff;
+}
+
+.projectDateField .cell {
+	-fx-text-fill: #ffffff;
+	-fx-background-color: #333333;
+	-fx-border-color: #222222;
+}
+
+.projectDescField {
+	-fx-background-color: #222222;
+	-fx-control-inner-background: #222222;
+	-fx-text-fill: #ffffff;
+}
+
+.errorMessage {
+	-fx-text-fill: #ff4444;
+}
