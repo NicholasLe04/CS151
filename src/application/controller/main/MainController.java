@@ -76,7 +76,8 @@ public class MainController {
 
 	// search projects with searchbar text
 	public void updateProjects() {
-		updateProjects(searchText);
+		if (searchText == null) updateProjects("");
+		else updateProjects(searchText);
 	}
 
 	// search projects with custom text
