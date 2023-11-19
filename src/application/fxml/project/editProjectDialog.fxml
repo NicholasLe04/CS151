@@ -45,7 +45,7 @@
 	<bottom>
 		<HBox fx:id="buttonBox" styleClass="buttonBox" alignment="BOTTOM_RIGHT">
 			<Button fx:id="cancelButton" styleClass="projectCancelButton" onAction="#closeDialog">Cancel</Button>
-			<Button fx:id="editButton" styleClass="projectEditButton" onAction="#editProject">Create</Button>
+			<Button fx:id="editButton" styleClass="projectEditButton" onAction="#editProject">Edit</Button>
 		</HBox>
 	</bottom>
 </BorderPane>

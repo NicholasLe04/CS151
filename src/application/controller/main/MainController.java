@@ -8,7 +8,8 @@ import application.controller.project.ProjectController;
 import db.SQLConnector;
 import entries.Project;
 import entries.ProjectDAO;
-import javafx.event.ActionEvent;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class MainController {
 	
@@ -27,14 +29,28 @@ public class MainController {
 	@FXML private FlowPane projectGrid;
 	@FXML private TextField searchBar;
 	
+	private String lastSearchText;
+	
 	@FXML
 	public void initialize() {
 		conn = SQLConnector.getConnection();
 		projectDAO = new ProjectDAO(conn);
 		updateProjects("");
-		searchBar.textProperty().addListener((observable, oldValue, newValue)-> {
-			updateProjects(newValue);
-		});
+		
+		// i would add an async ui update here, like in javascript, but javafx doesnt allow it for some reason. i hate this framework.
+		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+            String searchText = searchBar.getText();
+            if (!searchText.equals(lastSearchText)) {
+                updateProjects(searchText);	
+                lastSearchText = searchText;
+            }
+        }));
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		
+		searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            timeline.stop();
+            timeline.play();
+        });
 	}
 	
 	public void showCreateProjectDialog() {
