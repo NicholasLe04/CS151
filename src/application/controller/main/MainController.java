@@ -30,6 +30,7 @@ public class MainController {
 	@FXML private TextField searchBar;
 	
 	private String lastSearchText;
+	private String searchText;
 	
 	@FXML
 	public void initialize() {
@@ -39,9 +40,9 @@ public class MainController {
 		
 		// i would add an async ui update here, like in javascript, but javafx doesnt allow it for some reason. i hate this framework.
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), e -> {
-            String searchText = searchBar.getText();
+            searchText = searchBar.getText();
             if (!searchText.equals(lastSearchText)) {
-                updateProjects(searchText);	
+                updateProjects();	
                 lastSearchText = searchText;
             }
         }));
@@ -73,7 +74,12 @@ public class MainController {
 		}
 	}
 
-	// TODO: add highlight on projects with that name
+	// search projects with searchbar text
+	public void updateProjects() {
+		updateProjects(searchText);
+	}
+
+	// search projects with custom text
 	public void updateProjects(String searchText) {
 		ArrayList<Project> projects = projectDAO.searchProjects(searchText);
 		

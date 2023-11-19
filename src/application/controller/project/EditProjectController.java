@@ -54,7 +54,7 @@ public class EditProjectController {
     public void closeDialog() {
     	Stage stage = (Stage) editButton.getScene().getWindow();
 		// FIXME: this takes forever for some reason - maybe add indexing?
-		mainController.updateProjects("");							// update projectGrid
+		mainController.updateProjects();							// update projectGrid
 		projectController.setButtonState(true);						// enable newProjectButton
 		stage.close();												// close window
 	}
