@@ -39,6 +39,7 @@ public class MainController {
 		updateProjects("");
 		
 		// i would add an async ui update here, like in javascript, but javafx doesnt allow it for some reason. i hate this framework.
+		// this was supposed to be throttling but it became debouncing. i have no idea why or how
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), e -> {
             searchText = searchBar.getText();
             if (!searchText.equals(lastSearchText)) {

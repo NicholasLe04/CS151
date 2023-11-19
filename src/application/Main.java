@@ -22,7 +22,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		// TODO: REMOVE THIS. THIS IS JUST FOR CODE VER 0.5
+		// TODO: REMOVE THIS LATER.
 		Connection conn = SQLConnector.getConnection();
 		ProjectDAO projectDAO = new ProjectDAO(conn);
 		TicketDAO ticketDAO = new TicketDAO(conn);
@@ -43,6 +43,16 @@ public class Main extends Application {
 		commentDAO.createComment("the linkedin guy said it was okay", 4);
 		commentDAO.createComment("i may move to aws", 4);
 		
+		projectDAO.createProject("skilltree", LocalDate.now(), "Learn new skills with video game style skill trees! https://github.com/NicholasLe04/skilltree");
+		ticketDAO.createTicket("ai gen trees", "ai generated trees do not correctly save info sometimes", "skilltree");
+		commentDAO.createComment("issues with quotes?", 5);
+		commentDAO.createComment("we could remove quotes entirely from inputs or add escape characters", 5);
+		
+		projectDAO.createProject("blockfish", LocalDate.now(),"stockfish but bad https://github.com/NicholasLe04/blockfish");
+		ticketDAO.createTicket("super inefficient", "need to add multithreading or whatever i added before", "blockfish");
+		commentDAO.createComment("python threading is not even real", 6);
+		commentDAO.createComment("dynamic programming", 6);
+;		
 		try {
 			// load fxml
 			FXMLLoader loader = new FXMLLoader();
