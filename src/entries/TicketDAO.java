@@ -18,7 +18,7 @@ public class TicketDAO {
 		this.conn = conn;
 	}
 
-	public ArrayList<Ticket> getTickets(String projectTitle) {
+	public ArrayList<Ticket> getTickets(String projectTitle, String searchText) {
 		ArrayList<Ticket> tickets = new ArrayList<>();
 		try {
 			// queries for all tickets
@@ -26,7 +26,8 @@ public class TicketDAO {
 			ResultSet res = statement.executeQuery(
 				"SELECT * " +
 				"FROM ticket " + 
-				"WHERE project_title='" + projectTitle + "'"
+				"WHERE (project_title='" + projectTitle + "'" +
+				" AND ticket_title LIKE '%" + searchText + "%')"
 			);
 			// places everything in ArrayList tickets
 			while (res.next()) {

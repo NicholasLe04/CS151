@@ -11,14 +11,18 @@ import db.SQLConnector;
 import entries.ProjectDAO;
 import entries.Ticket;
 import entries.TicketDAO;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ProjectController {
 	
@@ -30,11 +34,15 @@ public class ProjectController {
 	@FXML private Label date;
 	@FXML private Label desc;
 	@FXML private VBox projectRoot;
+	@FXML private TextField searchBar;
 	
 	@FXML private Button createTicketButton;
 	@FXML private Button editProjectButton;
 	@FXML private Button deleteProjectButton;
 	@FXML private VBox ticketList;
+	
+	private String searchText;
+	private String lastSearchText;
 	
 	@FXML
 	public void initialize() {
@@ -42,6 +50,21 @@ public class ProjectController {
 		projectDAO = new ProjectDAO(conn);
 		ticketDAO = new TicketDAO(conn);
 		updateTickets();
+		
+
+		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+            searchText = searchBar.getText();
+            if (!searchText.equals(lastSearchText)) {
+                updateTickets();	
+                lastSearchText = searchText;
+            }
+        }));
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		
+		searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            timeline.stop();
+            timeline.play();
+        });
 	}
 
 	public String getTitle() {
@@ -123,9 +146,14 @@ public class ProjectController {
     	}
     }
     
-    // this reloads the project grid, like in react!
     public void updateTickets() {
-    	ArrayList<Ticket> tickets = ticketDAO.getTickets(title.getText());
+    	if (searchText == null) updateTickets("");
+    	else updateTickets(searchText);
+    }
+    
+    // this reloads the project grid, like in react!
+    public void updateTickets(String search) {
+    	ArrayList<Ticket> tickets = ticketDAO.getTickets(title.getText(), search);
     	
     	try {
     		ticketList.getChildren().clear();

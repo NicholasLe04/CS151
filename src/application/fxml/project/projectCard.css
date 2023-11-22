@@ -53,3 +53,14 @@
 	-fx-max-width: 20px;
 	-fx-max-height: 20px;
 }
+
+.ticketSearchBar {
+	-fx-pref-width: 200px;
+	-fx-pref-height: 40px;
+	-fx-prompt-text-fill: #aaaaaa;
+	-fx-text-fill: white;
+	-fx-font-size: 16px;
+	-fx-margin: 20px;
+	-fx-background-radius: 10px;
+	-fx-background-color: #333333;
+}
