@@ -31,11 +31,8 @@ public class ProjectDAO {
 			Statement statement = conn.createStatement();
 			
 			ResultSet res = statement.executeQuery(
-				"SELECT DISTINCT p.project_title, p.start_date, p.desc " +
-				"FROM project p " + 
-				"LEFT JOIN ticket t ON p.project_title = t.project_title " +
-				"WHERE p.project_title LIKE '%" + substring +"%' " +
-				"OR t.ticket_title LIKE '%" + substring + "%'"
+				"SELECT * FROM project " +
+				"WHERE project_title LIKE '%" + substring +"%'" 
 			);
 			
 			// places everything in ArrayList projects
