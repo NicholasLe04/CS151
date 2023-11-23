@@ -35,6 +35,5 @@
         <Label fx:id="date" styleClass="projectDate" />
         <Label fx:id="desc" styleClass="projectDesc" wrapText="true" />
     </VBox>
-    <TextField fx:id="searchBar" styleClass="ticketSearchBar" promptText="Search tickets..." />
     <VBox fx:id="ticketList" styleClass="ticketList" alignment="CENTER" spacing="20" />
 </VBox>

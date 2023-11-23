@@ -50,21 +50,6 @@ public class ProjectController {
 		projectDAO = new ProjectDAO(conn);
 		ticketDAO = new TicketDAO(conn);
 		updateTickets();
-		
-
-		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200), e -> {
-            searchText = searchBar.getText();
-            if (!searchText.equals(lastSearchText)) {
-                updateTickets();	
-                lastSearchText = searchText;
-            }
-        }));
-		timeline.setCycleCount(Timeline.INDEFINITE);
-		
-		searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            timeline.stop();
-            timeline.play();
-        });
 	}
 
 	public String getTitle() {
