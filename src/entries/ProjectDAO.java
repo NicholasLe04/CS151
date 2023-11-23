@@ -20,7 +20,7 @@ public class ProjectDAO {
 	}
 	
 	/**
-	 * Get Projects that contain the substring within its name or its Tickets' titles
+	 * Get Projects that contain the substring within its name
 	 * @param substring
 	 * @return ArrayList<Project> projects
 	 */
@@ -31,8 +31,42 @@ public class ProjectDAO {
 			Statement statement = conn.createStatement();
 			
 			ResultSet res = statement.executeQuery(
-				"SELECT * FROM project " +
-				"WHERE project_title LIKE '%" + substring +"%'" 
+				"SELECT DISTINCT p.project_title, p.start_date, p.desc " +
+				"FROM project p " + 
+				"LEFT JOIN ticket t ON p.project_title = t.project_title " +
+				"WHERE p.project_title LIKE '%" + substring +"%' "
+			);
+			
+			// places everything in ArrayList projects
+			while (res.next()) {
+				String projectTitle = res.getString(1);
+				String projectStartDate = res.getString(2);
+				String projectDesc = res.getString(3);
+				toReturn.add(new Project(projectTitle, LocalDate.parse(projectStartDate), projectDesc));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}	
+		return toReturn;
+	}
+	
+	/**
+	 * Get Projects that contain the substring within its Tickets' titles
+	 * @param substring
+	 * @return ArrayList<Project> projects
+	 */
+	public ArrayList<Project> searchTickets(String substring) {
+		ArrayList<Project> toReturn = new ArrayList<>();
+		try {
+			// queries for all projects
+			Statement statement = conn.createStatement();
+			
+			ResultSet res = statement.executeQuery(
+				"SELECT DISTINCT p.project_title, p.start_date, p.desc " +
+				"FROM project p " + 
+				"LEFT JOIN ticket t ON p.project_title = t.project_title " +
+				"WHERE t.ticket_title LIKE '%" + substring +"%' " //+
+				//"OR t.ticket_title LIKE '%" + substring + "%'"
 			);
 			
 			// places everything in ArrayList projects

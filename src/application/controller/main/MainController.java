@@ -28,14 +28,18 @@ public class MainController {
 	@FXML private Button createProjectButton;
 	@FXML private FlowPane projectGrid;
 	@FXML private TextField searchBar;
+	@FXML private TextField ticketBar;
 	
 	private String lastSearchText;
 	private String searchText;
+	private String ticketSearchText;
+	private String lastTicketSearchText;
 	
 	@FXML
 	public void initialize() {
 		conn = SQLConnector.getConnection();
 		projectDAO = new ProjectDAO(conn);
+		updateTickets("");
 		updateProjects("");
 		
 		// i would add an async ui update here, like in javascript, but javafx doesnt allow it for some reason. i hate this framework.
@@ -46,10 +50,22 @@ public class MainController {
                 updateProjects();	
                 lastSearchText = searchText;
             }
+            
+            ticketSearchText = ticketBar.getText();
+            if (!ticketSearchText.equals(lastTicketSearchText)) {
+                updateTickets();	
+                lastTicketSearchText = ticketSearchText;
+            }
+            
         }));
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		
 		searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            timeline.stop();
+            timeline.play();
+        });
+		
+		ticketBar.textProperty().addListener((observable, oldValue, newValue) -> {
             timeline.stop();
             timeline.play();
         });
@@ -105,6 +121,37 @@ public class MainController {
 			e.printStackTrace();
 		}
 	}
+	
+	// search tickets with searchbar text
+		public void updateTickets() {
+			if (ticketSearchText == null) updateTickets("");
+			else updateTickets(ticketSearchText);
+		}
+
+	// search tickets with custom text
+		public void updateTickets(String ticketSearchText) {
+			ArrayList<Project> projects = projectDAO.searchTickets(ticketSearchText);
+			
+			try {
+				projectGrid.getChildren().clear();
+				for (Project project : projects) {
+					// load project fxml
+					FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/application/fxml/project/projectCard.fxml"));
+					Parent projectNode = projectLoader.load();
+					// modify the projectNode
+					ProjectController controller = (ProjectController) projectNode.getUserData();
+					controller.setTitle(project.getTitle());
+					controller.setDate(project.getDate());
+					controller.setDesc(project.getDesc());
+					// get tickets too
+					controller.updateTickets();
+					// add project
+					projectGrid.getChildren().add(projectNode);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	
 	public void setButtonState(boolean state) {
 		createProjectButton.setDisable(!state);
