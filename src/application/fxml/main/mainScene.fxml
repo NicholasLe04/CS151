@@ -18,8 +18,10 @@
 			<HBox styleClass="mainHeader" alignment="CENTER">
 				<Label styleClass="mainTitleLabel">Projects</Label>
 				<Region HBox.hgrow="ALWAYS" />
-				<TextField fx:id="searchBar" styleClass="mainSearchBar" promptText="Search projects..."></TextField>
-				<TextField fx:id="ticketBar" styleClass="mainSearchBar" promptText="Search tickets..."></TextField>
+				<HBox spacing="10" alignment="CENTER">
+					<TextField fx:id="searchBar" styleClass="mainSearchBar" promptText="Search projects..."></TextField>
+					<TextField fx:id="ticketBar" styleClass="mainSearchBar" promptText="Search tickets..."></TextField>
+				</HBox>
 				<Region HBox.hgrow="ALWAYS" />
 				<Label styleClass="mainHidden">Projects</Label>
 			</HBox> 
