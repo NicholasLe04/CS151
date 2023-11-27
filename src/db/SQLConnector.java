@@ -22,6 +22,7 @@ public class SQLConnector {
 		try {
 			directory = SQLConnector.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
             directory = directory.substring(1, directory.lastIndexOf("/"));
+            directory = directory.substring(0, directory.lastIndexOf("/"));
 		} catch(URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -40,7 +41,7 @@ public class SQLConnector {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		this.conn = conn;
+		SQLConnector.conn = conn;
 		
 		// attempt create all tables if not exist
 		try {

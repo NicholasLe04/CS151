@@ -1,4 +1,5 @@
 .metadata
+data/
 bin/
 tmp/
 *.tmp
@@ -54,4 +55,3 @@ local.properties
 .cache-main
 .scala_dependencies
 .worksheet
-

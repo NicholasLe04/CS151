@@ -42,7 +42,6 @@ public class ProjectController {
 	@FXML private VBox ticketList;
 	
 	private String searchText;
-	private String lastSearchText;
 	
 	@FXML
 	public void initialize() {
