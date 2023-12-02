@@ -51,7 +51,7 @@ public class CommentController {
 		commentDAO.deleteComment(id);
 		// update commentList
 		// ticket controller to update commentList
-		TicketController controller = (TicketController) body.getParent().getParent().getParent().getUserData();
+		TicketController controller = (TicketController) body.getParent().getParent().getParent().getParent().getUserData();
 		controller.updateComments();
 	}
 	

@@ -52,7 +52,7 @@ public class Main extends Application {
 		// ticketDAO.createTicket("super inefficient", "need to add multithreading or whatever i added before", "blockfish");
 		// commentDAO.createComment("python threading is not even real", 6);
 		// commentDAO.createComment("dynamic programming", 6);
-;		
+
 		try {
 			// load fxml
 			FXMLLoader loader = new FXMLLoader();
