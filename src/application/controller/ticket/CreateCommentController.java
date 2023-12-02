@@ -2,7 +2,6 @@ package application.controller.ticket;
 
 import java.sql.Connection;
 
-import application.controller.project.ProjectController;
 import db.SQLConnector;
 import entries.CommentDAO;
 import javafx.fxml.FXML;
