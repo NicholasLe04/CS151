@@ -45,7 +45,7 @@ public class EditProjectController {
 		projectController = (ProjectController) stage.getUserData();
 		mainController = (MainController) projectController.getProjectRoot().getParent().getParent().getParent().getParent().getParent().getParent().getUserData();
 		
-		titleLabel.setText("Edit " + projectController.getTitle());
+		titleLabel.setText("Edit Project: " + projectController.getTitle());
 		titleField.setText(projectController.getTitle());
 		dateField.setValue(projectController.getDate());	
 		descField.setText(projectController.getDesc());

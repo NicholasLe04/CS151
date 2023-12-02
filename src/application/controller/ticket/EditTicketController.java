@@ -41,7 +41,7 @@ public class EditTicketController {
 		ticketController = (TicketController) stage.getUserData();
 		projectController = (ProjectController) ticketController.getTicketRoot().getParent().getParent().getUserData();
 		
-		titleLabel.setText("Edit " + ticketController.getTitle());
+		titleLabel.setText("Edit Ticket: " + ticketController.getTitle());
 		titleField.setText(ticketController.getTitle());
 		descField.setText(ticketController.getDesc());
     }
