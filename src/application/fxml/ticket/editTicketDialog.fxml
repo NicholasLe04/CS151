@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.ticket.EditTicketController" stylesheets="@editTicketDialog.css">
+	<top>
+		<HBox styleClass="header">
+			<Label fx:id="titleLabel" styleClass="titleLabel"></Label>
+		</HBox>
+	</top>
+	<center>
+		<VBox styleClass="form">
+			<VBox styleClass="ticketTitle">
+				<HBox>
+					<Label styleClass="ticketTitleLabel">New Ticket Title:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="titleError" styleClass="errorMessage"></Label>
+				</HBox>
+				<TextField fx:id="titleField" styleClass="ticketTitleField"/>
+			</VBox>
+			<VBox styleClass="ticketDesc">
+				<HBox>
+					<Label styleClass="ticketDescLabel">New Description:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="descError" styleClass="errorMessage" alignment="CENTER_RIGHT"></Label>
+				</HBox>
+				<TextArea fx:id="descField" styleClass="ticketDescField"/>
+			</VBox>
+		</VBox>
+	</center>
+	<bottom>
+		<HBox fx:id="buttonBox" styleClass="buttonBox" alignment="BOTTOM_RIGHT">
+			<Button fx:id="cancelButton" styleClass="ticketCancelButton" onAction="#closeDialog">Cancel</Button>
+			<Button fx:id="editButton" styleClass="ticketEditButton" onAction="#editTicket">Edit</Button>
+		</HBox>
+	</bottom>
+</BorderPane>

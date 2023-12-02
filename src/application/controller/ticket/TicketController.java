@@ -13,9 +13,11 @@ import entries.TicketDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class TicketController {
 	
@@ -49,8 +51,16 @@ public class TicketController {
 		this.id = id;
 	}
 	
+	public String getTitle() {
+		return title.getText();
+	}
+
 	public void setTitle(String title) {
 		this.title.setText(title);
+	}
+
+	public String getDesc() {
+		return desc.getText();
 	}
 	
 	public void setDesc(String desc) {
@@ -84,7 +94,24 @@ public class TicketController {
 	}
 
 	public void showEditTicketDialog() {
-		System.out.println("edit " + id);
+		try {
+			// load fxml
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/application/fxml/ticket/editTicketDialog.fxml"));
+			Parent root = loader.load();
+			// open new window
+			Stage stage = new Stage();
+			Scene scene = new Scene(root, 800, 500);
+			stage.setScene(scene);
+			stage.setOnCloseRequest(e -> setButtonState(true));
+			stage.setUserData(this);
+			((EditTicketController) loader.getController()).populateFields(stage);
+			stage.show();			
+			// disable button
+			setButtonState(false);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
 	}
 	
 	// this reloads the comment list, like in react!
@@ -114,7 +141,7 @@ public class TicketController {
 		createCommentButton.setDisable(!state);
     	editTicketButton.setDisable(!state);
     	deleteTicketButton.setDisable(!state);
-    	ProjectController projectController = (ProjectController) ticketRoot.getParent().getParent().getUserData();
+		ProjectController projectController = (ProjectController) ticketRoot.getParent().getParent().getUserData();
 		projectController.setButtonState(state);
 	}
 }

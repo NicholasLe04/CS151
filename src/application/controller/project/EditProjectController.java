@@ -53,8 +53,8 @@ public class EditProjectController {
 
     public void closeDialog() {
     	Stage stage = (Stage) editButton.getScene().getWindow();
+    	projectController.setButtonState(true);						// enable newProjectButton
 		mainController.updateProjects();							// update projectGrid
-		projectController.setButtonState(true);						// enable newProjectButton
 		stage.close();												// close window
 	}
 
