@@ -1,5 +1,6 @@
 package application.controller.comment;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 
@@ -7,9 +8,13 @@ import application.controller.ticket.TicketController;
 import db.SQLConnector;
 import entries.CommentDAO;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class CommentController {
 	
@@ -29,9 +34,17 @@ public class CommentController {
 		conn = SQLConnector.getConnection();
 		commentDAO = new CommentDAO(conn);
 	}
+
+	public int getId() {
+		return id;
+	}
 		
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getBody() {
+		return body.getText();
 	}
 	
 	public void setBody(String body) {
@@ -56,11 +69,30 @@ public class CommentController {
 	}
 	
 	public void showEditCommentBox() {
-		System.out.println("edit " + id);
+		try {
+			// load fxml
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/application/fxml/comment/editCommentDialog.fxml"));
+			Parent root = loader.load();
+			// open new window
+			Stage stage = new Stage();
+			Scene scene = new Scene(root, 800, 500);
+			stage.setScene(scene);
+			stage.setOnCloseRequest(e -> setButtonState(true));
+			stage.setUserData(this);
+			((EditCommentController) loader.getController()).populateFields(stage);
+			stage.show();			
+			// disable button
+			setButtonState(false);
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
 	}
 	
 	public void setButtonState(boolean state) {
 		editCommentButton.setDisable(!state);
 		deleteCommentButton.setDisable(!state);
+		TicketController controller = (TicketController) body.getParent().getParent().getParent().getParent().getUserData();
+		controller.setButtonState(state);
 	}
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane styleClass="root" xmlns:fx="http://javafx.com/fxml" fx:controller="application.controller.comment.EditCommentController" stylesheets="@editCommentDialog.css">
+	<top>
+		<HBox styleClass="header">
+			<Label fx:id="titleLabel" styleClass="titleLabel">Edit Comment</Label>
+		</HBox>
+	</top>
+	<center>
+		<VBox styleClass="form">
+			<VBox styleClass="commentBody">
+				<HBox>
+					<Label styleClass="commentBodyLabel">New Body:</Label>
+					<Region HBox.hgrow="ALWAYS"></Region>
+					<Label fx:id="bodyError" styleClass="errorMessage" alignment="CENTER_RIGHT"></Label>
+				</HBox>
+				<TextArea fx:id="bodyField" styleClass="commentBodyField"/>
+			</VBox>
+		</VBox>
+	</center>
+	<bottom>
+		<HBox fx:id="buttonBox" styleClass="buttonBox" alignment="BOTTOM_RIGHT">
+			<Button fx:id="cancelButton" styleClass="commentCancelButton" onAction="#closeDialog">Cancel</Button>
+			<Button fx:id="editButton" styleClass="commentEditButton" onAction="#editComment">Edit</Button>
+		</HBox>
+	</bottom>
+</BorderPane>
