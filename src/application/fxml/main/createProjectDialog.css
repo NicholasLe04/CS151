@@ -1,11 +1,10 @@
 .root {
-	-fx-background-color: #333333;
+	-fx-background-color: #181818;
 }
 
 .header {
 	-fx-padding: 25 0 10 75;
 	-fx-background-color: #2a4e6c;
-	/* fix color */
 }
 
 .titleLabel {
@@ -19,6 +18,8 @@
 .projectDate,
 .projectDesc {
 	-fx-spacing: 5px;
+	-fx-font-family: "Helvetica";
+	-fx-font-size: 20;
 }
 
 .projectTitleLabel,

@@ -1,11 +1,10 @@
 .mainRoot {
-    -fx-background-color: #333333;
+    -fx-background-color: #181818;
 }
 
 .mainHeader {
     -fx-padding: 25 75 25 75;
     -fx-background-color: #2a4e6c;
-    /* fix color */
 }
 
 .mainTitleLabel {
@@ -41,11 +40,11 @@
 .mainSearchBar {
 	-fx-pref-width: 400px;
 	-fx-pref-height: 40px;
-	-fx-prompt-text-fill: #aaaaaa;
+	-fx-prompt-text-fill: #bac5ce;
 	-fx-text-fill: white;
 	-fx-font-size: 16px;
 	-fx-background-radius: 10px;
-	-fx-background-color: #333333;
+	-fx-background-color: #415e77;
 }
 
 .mainHidden {

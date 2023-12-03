@@ -3,6 +3,7 @@ package application.controller.comment;
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import application.controller.ticket.TicketController;
 import db.SQLConnector;
@@ -52,7 +53,11 @@ public class CommentController {
 	}
 	
 	public void setTimestamp(LocalDateTime timestamp) {
-		this.timestamp.setText(timestamp.toLocalDate() + " " + timestamp.toLocalTime());
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofPattern("MMM dd, yyyy, hh:mm a");
+        String formatterDateTime = dateTimeFormatter.format(timestamp);
+		
+		this.timestamp.setText(formatterDateTime);
 	}
 	
 	public VBox getCommentRoot() {

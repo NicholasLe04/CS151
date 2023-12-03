@@ -3,6 +3,7 @@ package application.controller.project;
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import application.controller.main.MainController;
@@ -53,7 +54,8 @@ public class ProjectController {
 	}
 	
 	public LocalDate getDate() {
-		return LocalDate.parse(date.getText().substring(11));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+		return LocalDate.parse(date.getText().substring(11), formatter);
 	}
 	
 	public String getDesc() {
@@ -65,7 +67,11 @@ public class ProjectController {
     }
     
     public void setDate(LocalDate date) {
-        this.date.setText("Started on " + date.toString());
+    	DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofPattern("MMM dd, yyyy");
+        String formatterDate = dateTimeFormatter.format(date);
+    	
+    	this.date.setText("Started on " + formatterDate);
     }
     
     public void setDesc(String desc) {
